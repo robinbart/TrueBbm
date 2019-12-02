@@ -7,6 +7,7 @@ public class Perso implements Runnable {
     private int id;
     private Plateau p;
     private int x, y;
+    private boolean mort = false;
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
     private int vie = 3; //TODO: dans constructeur
@@ -24,6 +25,14 @@ public class Perso implements Runnable {
     public void perdVie() {
         vie--;
         System.out.println("aïe j'ai plus que " + vie + " point de vie");
+        if(vie <=0){
+            p.getTab(x, y).setC(Contenu.Vide);
+            mort = true;
+            synchronized (m){
+                m.notifyAll();
+            }
+        }
+
     }
 
     public int getVie(){
@@ -46,7 +55,7 @@ public class Perso implements Runnable {
 
     public void run(){
         while (true) {
-            if(e == 90){
+            if(e == 90 || mort){
                 break;
             }
             if (e == 65) {

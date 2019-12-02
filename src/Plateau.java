@@ -65,7 +65,6 @@ public class Plateau extends Object{
         System.out.println("x : "+x+" et y : "+y);
         System.out.println("Perso 1 a " + p1.getVie());
         for (int j = 1; j < portee; j++) { //vers le bas
-
             if (y+j < taille && (tab[x][y + j].getC() == Contenu.Vide
                     || tab[x][y + j].getC() == Contenu.Perso )) {
                 if(tab[x][y + j].getC() == Contenu.Perso) {
@@ -84,7 +83,7 @@ public class Plateau extends Object{
         }
         for (int j = 1; j < portee; j++) { //vers le haut
             if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
-                if(tab[x][y + j].getC() == Contenu.Perso){
+                if(tab[x][y - j].getC() == Contenu.Perso){
                     System.out.println("je perd un point "+p1.getVie() + " en haut");
                     p1.perdVie();
                 }
@@ -101,7 +100,7 @@ public class Plateau extends Object{
         for (int j = 1; j < portee; j++) { //vers la doite
             if (x+j < taille && (tab[x + j][y].getC() == Contenu.Vide
                     || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
-                if(tab[x][y + j].getC() == Contenu.Perso){
+                if(tab[x + j][y].getC() == Contenu.Perso){
                     p1.perdVie();
                     System.out.println("je perd un point "+p1.getVie() + " a droite");
                 }
@@ -118,7 +117,7 @@ public class Plateau extends Object{
         for (int j = 1; j < portee; j++) { //vers la gauche
             if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide
                     || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
-                if(tab[x][y + j].getC() == Contenu.Perso){
+                if(tab[x - j][y].getC() == Contenu.Perso){
                     System.out.println("je perd un point "+p1.getVie() + " a gauche");
                     p1.perdVie();
                 }

@@ -4,9 +4,15 @@ public class Lancement {
 		Thread t = new Thread(p1);
 		System.out.println("oui");
 		t.start();*/
+		boolean created = true;
+        Oui fen = null;
         while (true){
             Plateau p = new Plateau(10);
             Perso p1 = new Perso(p, 0, 0);
+            if(!created){
+                fen.setP(p, p1);
+                System.err.println("Je modifie P");
+            }
             p.addPerso(p1);
             //Perso p2 = new Perso(p, 9, 9);
             Thread t1 = new Thread(p1);
@@ -14,11 +20,13 @@ public class Lancement {
             //Thread t2 = new Thread(p2);
             //t2.start();
 
-            Oui fen = new Oui(p, p1);
-            Thread t3 = new Thread(fen);
-            t3.start();
+            if(created) {
+                fen = new Oui(p, p1);
+                Thread t3 = new Thread(fen);
+                t3.start();
+                created = false;
+            }
             t1.join();
         }
-
     }
 }

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.WindowEvent;
 
 public class Oui extends JFrame implements Runnable {
 
@@ -13,8 +14,22 @@ public class Oui extends JFrame implements Runnable {
         this.pl = pl;
         p = new Panneau(pl);
         this.setTitle("BomBerMan");
-        this.setSize(1000, 1000);
-        this.setLocation(0, 0);
+        this.setSize(1016, 1039);
+        this.setLocation(500, 0);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(p);
+        this.setVisible(true);
+        this.addKeyListener(c);
+    }
+
+    public void setP(Plateau pl, Perso p1){
+        c = new Controler(p1);
+        this.p1 = p1;
+        this.pl = pl;
+        p = new Panneau(pl);
+        this.setTitle("BomBerMan");
+        this.setSize(1016, 1039);
+        this.setLocation(500, 0);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(p);
         this.setVisible(true);
@@ -23,17 +38,16 @@ public class Oui extends JFrame implements Runnable {
 
 
     public void run() {
-        int i = 0;
-        int j = 0;
-        while (true) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                System.out.print("pb avec le sleep");
+        try {
+            while (true) {
+                Thread.sleep(50);
+                p.repaint();
             }
-            //p.adaptation(i,j);
-            p.repaint();
-            i += 100;
+        }catch (InterruptedException e){
+            System.err.println("Fin de la partie");
+        }
+        finally {
+            this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
     }
 }
