@@ -23,6 +23,11 @@ public class Perso implements Runnable {
 
     public void perdVie() {
         vie--;
+        System.out.println("aïe j'ai plus que " + vie + " point de vie");
+    }
+
+    public int getVie(){
+        return vie;
     }
 
     public void changerE(int KeyCode) {

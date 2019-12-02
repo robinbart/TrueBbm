@@ -2,6 +2,8 @@ public class Plateau extends Object{
 
     private Case[][] tab;
     private int taille;
+    private Perso p1;
+    private Perso p2;
 
     public Plateau(int taille) {
         this.taille = taille;
@@ -20,6 +22,10 @@ public class Plateau extends Object{
                 }
             }
         }
+    }
+
+    public void addPerso(Perso p){
+        p1 = p;
     }
 
     public Case getTab(int x, int y) {
@@ -53,10 +59,19 @@ public class Plateau extends Object{
 
     public void explosion(int portee, int x, int y) {
         tab[x][y].deflag();
+        if(tab[x][y].getC() == Contenu.Perso){
+            p1.perdVie();
+        }
         System.out.println("x : "+x+" et y : "+y);
+        System.out.println("Perso 1 a " + p1.getVie());
         for (int j = 1; j < portee; j++) { //vers le bas
+
             if (y+j < taille && (tab[x][y + j].getC() == Contenu.Vide
-                    || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso )) {
+                    || tab[x][y + j].getC() == Contenu.Perso )) {
+                if(tab[x][y + j].getC() == Contenu.Perso) {
+                    System.out.println("je perd un point " + p1.getVie() + " en bas   ");
+                    p1.perdVie();
+                }
                 tab[x][y + j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
             } else { 
@@ -68,7 +83,11 @@ public class Plateau extends Object{
             }
         }
         for (int j = 1; j < portee; j++) { //vers le haut
-            if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso)) {
+            if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
+                if(tab[x][y + j].getC() == Contenu.Perso){
+                    System.out.println("je perd un point "+p1.getVie() + " en haut");
+                    p1.perdVie();
+                }
                 tab[x][y - j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
@@ -80,7 +99,12 @@ public class Plateau extends Object{
             }
         }
         for (int j = 1; j < portee; j++) { //vers la doite
-            if (x+j < taille && (tab[x + j][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
+            if (x+j < taille && (tab[x + j][y].getC() == Contenu.Vide
+                    || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
+                if(tab[x][y + j].getC() == Contenu.Perso){
+                    p1.perdVie();
+                    System.out.println("je perd un point "+p1.getVie() + " a droite");
+                }
                 tab[x + j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
@@ -92,7 +116,12 @@ public class Plateau extends Object{
             }
         }
         for (int j = 1; j < portee; j++) { //vers la gauche
-            if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
+            if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide
+                    || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
+                if(tab[x][y + j].getC() == Contenu.Perso){
+                    System.out.println("je perd un point "+p1.getVie() + " a gauche");
+                    p1.perdVie();
+                }
                 tab[x - j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
