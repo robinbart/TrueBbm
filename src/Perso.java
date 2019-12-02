@@ -8,6 +8,7 @@ public class Perso implements Runnable {
     private Plateau p;
     private int x, y;
     private boolean mort = false;
+    private boolean immune = false;
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
     private int vie = 3; //TODO: dans constructeur
@@ -22,15 +23,23 @@ public class Perso implements Runnable {
         this.y = y;
     }
 
+    public void setImmune(){
+        immune = false;
+    }
+
     public void perdVie() {
-        vie--;
-        System.out.println("aïe j'ai plus que " + vie + " point de vie");
-        if(vie <=0){
-            p.getTab(x, y).setC(Contenu.Vide);
-            mort = true;
-            synchronized (m){
-                m.notifyAll();
+        if(!immune) {
+            vie--;
+            System.out.println("aïe j'ai plus que " + vie + " point de vie");
+            if (vie <= 0) {
+                p.getTab(x, y).setC(Contenu.Vide);
+                mort = true;
+                synchronized (m) {
+                    m.notifyAll();
+                }
             }
+            immune = true;
+            new Thread(new Attente(1000, this)).start();
         }
 
     }
@@ -89,6 +98,8 @@ public class Perso implements Runnable {
             if (e == 38) {
                 p.deplacement(this, x, y, x, y - 1);
             }
+            if(p.getTab()[x][y].isExplo())
+                perdVie();
             try {
                 synchronized (m) {
                     m.wait();

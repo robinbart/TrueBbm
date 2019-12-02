@@ -11,7 +11,6 @@ public class Lancement {
             Perso p1 = new Perso(p, 0, 0);
             if(!created){
                 fen.setP(p, p1);
-                System.err.println("Je modifie P");
             }
             p.addPerso(p1);
             //Perso p2 = new Perso(p, 9, 9);
