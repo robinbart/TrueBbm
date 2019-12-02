@@ -8,10 +8,15 @@ public class Plateau {
         tab = new Case[taille][taille];
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
-                if ((Math.random() * 10) % 10 > 2) {
+            	int rand = (Math.random() * 10);
+                if (rand % 10 > 4) {
                     tab[i][j] = new Case(Contenu.Vide);
                 } else {
-                    tab[i][j] = new Case(Contenu.Mur);
+                	if(rand > 2) {
+                		tab[i][j] = new Case(Contenu.Mur);
+                	}else {
+                		tab[i][j] = new Case(Contenu.Mur_Cassable);
+                	}
                 }
             }
         }
