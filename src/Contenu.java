@@ -1,6 +1,5 @@
-
 public enum Contenu {
-Mur,
-Vide,
-Perso
+    Mur,
+    Vide,
+    Perso
 }
