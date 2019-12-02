@@ -35,28 +35,74 @@ public class Plateau {
 	}
 	
 	public void deplacement(int x,int y, int i, int j) { //plus du genre a se tp
-		if(tab[x][y].getC() == Contenu.Perso) {
-			if(tab[i][j].getC()== Contenu.Vide) {
-				Case transi = tab[x][y];
-				tab[x][y]=tab[i][j];
-				tab[i][j]=transi;
+		if (i<taille && j<taille && i>0 && j>0) {
+			if(tab[x][y].getC() == Contenu.Perso) {
+				if(tab[i][j].getC()== Contenu.Vide) {
+					Case transi = tab[x][y];
+					tab[x][y]=tab[i][j];
+					tab[i][j]=transi;
+				}
 			}
 		}
 	}
 	 public void explosion(int portee, int x, int y) {
-		 for(int i=0;i<4;i++) {
-			 for(int j=0;j<portee;j++) {
-				 if(tab[i][j].getC()==Contenu.Vide || tab[i][j].getC()==Contenu.Perso)
-					 tab[i][j].setC(Contenu.Explo);
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x][y+j].getC()==Contenu.Vide || tab[x][y+j].getC()==Contenu.Perso) {
+				 tab[x][+j].setExplo();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x][y-j].getC()==Contenu.Vide || tab[x][y-j].getC()==Contenu.Perso) {
+				 tab[x][y-j].setExplo();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x+j][y].getC()==Contenu.Vide || tab[x+j][y].getC()==Contenu.Perso) {
+				 tab[x+j][y].setExplo();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x-j][j].getC()==Contenu.Vide || tab[x-j][y].getC()==Contenu.Perso) {
+				 tab[x-j][j].setExplo();
+			 }else {
+				 break;
 			 }
 		 }
 	 }
 	 
 	 public void finexplo(int portee, int x, int y) {
-		 for(int i=0; i<4; i++) {
-			 for(int j=0;j<portee;j++) {
-				 if(tab[i][j].getC()==Contenu.Vide || tab[i][j].getC()==Contenu.Perso)
-					 tab[i][j].setC(Contenu.Explo);
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x][y+j].getC()==Contenu.Vide || tab[x][y+j].getC()==Contenu.Perso) {
+				 tab[x][+j].finBoom();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x][y-j].getC()==Contenu.Vide || tab[x][y-j].getC()==Contenu.Perso) {
+				 tab[x][y-j].finBoom();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x+j][y].getC()==Contenu.Vide || tab[x+j][y].getC()==Contenu.Perso) {
+				 tab[x+j][y].finBoom();
+			 }else {
+				 break;
+			 }
+		 }
+		 for(int j=1;j<portee;j++) {
+			 if(tab[x-j][j].getC()==Contenu.Vide || tab[x-j][y].getC()==Contenu.Perso) {
+				 tab[x-j][j].finBoom();
+			 }else {
+				 break;
 			 }
 		 }
 	 }
