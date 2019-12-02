@@ -35,8 +35,11 @@ public class Perso implements Runnable {
     }
 
 
-    public void run() {
+    public void run(){
         while (true) {
+            if(e == 90){
+                break;
+            }
             if (e == 65) {
                 System.out.println("J'amorce");
                 Bombe b = new Bombe(portee, p, x, y);
