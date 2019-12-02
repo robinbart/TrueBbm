@@ -9,10 +9,10 @@ public class Plateau {
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
             	int rand = (int)(Math.random() * 10);
-                if (rand % 10 > 4) {
+                if (rand > 2) {
                     tab[i][j] = new Case(Contenu.Vide);
                 } else {
-                	if(rand > 2) {
+                	if(rand > 1) {
                 		tab[i][j] = new Case(Contenu.Mur);
                 	}else {
                 		tab[i][j] = new Case(Contenu.Mur_Cassable);
@@ -53,31 +53,40 @@ public class Plateau {
 
     public void explosion(int portee, int x, int y) {
         tab[x][y].deflag();
+        System.out.println("x : "+x+" et y : "+y);
         for (int j = 1; j < portee; j++) {
             if (tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Vide || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso) {
                 tab[x][Math.min(y + j, taille - 1)].setExplo();
-            } else {
+                System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
+            } else { 
+            	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
                 break;
             }
         }
         for (int j = 1; j < portee; j++) {
             if (tab[x][Math.max(y - j, 0)].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso) {
                 tab[x][Math.max(y - j, 0)].setExplo();
+                System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
+            	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
                 break;
             }
         }
         for (int j = 1; j < portee; j++) {
             if (tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso) {
                 tab[Math.min(x + j, taille - 1)][y].setExplo();
+                System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
+            	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x + j, 0)+" et y : "+y);
                 break;
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[Math.max(x - j, 0)][j].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso) {
-                tab[Math.max(x - j, 0)][j].setExplo();
+            if (tab[Math.max(x - j, 0)][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso) {
+                tab[Math.max(x - j, 0)][y].setExplo();
+                System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
+            	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
                 break;
             }
         }
@@ -100,14 +109,14 @@ public class Plateau {
         }
         for (int j = 1; j < portee; j++) {
             if (tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso) {
-                tab[Math.max(x + j, taille - 1)][y].finBoom();
+                tab[Math.min(x + j, taille - 1)][y].finBoom();
             } else {
                 break;
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[Math.max(x - j, 0)][j].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso) {
-                tab[Math.max(x - j, 0)][j].finBoom();
+            if (tab[Math.max(x - j, 0)][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso) {
+                tab[Math.max(x - j, 0)][y].finBoom();
             } else {
                 break;
             }
