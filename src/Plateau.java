@@ -55,8 +55,7 @@ public class Plateau {
         tab[x][y].deflag();
         System.out.println("x : "+x+" et y : "+y);
         for (int j = 1; j < portee; j++) {
-            if (tab[x][y + j].getC() == Contenu.Vide || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso || 
-            		y+j < taille) {
+            if (y+j < taille && (tab[x][y + j].getC() == Contenu.Vide || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso )) {
                 tab[x][y + j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
             } else { 
@@ -68,8 +67,7 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[x][y - j].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso ||
-            		y - j > 0) {
+            if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso)) {
                 tab[x][y - j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
@@ -81,8 +79,7 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[x + j][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso ||
-            		x+j < taille) {
+            if (x+j < taille && (tab[x + j][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
                 tab[x + j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
@@ -94,8 +91,7 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[x - j][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso ||
-            		x - j > 0) {
+            if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
                 tab[x - j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {

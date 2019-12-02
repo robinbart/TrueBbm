@@ -18,6 +18,10 @@ public class Controler implements KeyListener {
         if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 65) {
             p.changerE(kc);
         }
+        if(kc == 1){
+            System.out.println("Tu as gagné !");
+            p.setXY(0, 0);
+        }
     }
 
     public void keyReleased(KeyEvent e) {
