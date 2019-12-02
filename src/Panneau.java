@@ -34,7 +34,10 @@ public class Panneau extends JPanel {
                         g.setColor(Color.black);
                         g.fillRect(i * 100, j * 100, 100, 100);
                     } else {
-                        if (pl.getTab(i, j).getC() == Contenu.Perso) {
+                    	if (pl.getTab(i, j).getC() == Contenu.Mur_Cassable) {
+                            g.setColor(Color.DARK_GRAY);
+                            g.fillRect(i * 100, j * 100, 100, 100);
+                    	}else {
                             if (pl.getTab(i, j).isExplo()) {
                                 g.drawImage(img, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
                                         34, Color.red, this);

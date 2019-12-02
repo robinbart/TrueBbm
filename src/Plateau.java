@@ -8,7 +8,7 @@ public class Plateau {
         tab = new Case[taille][taille];
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
-            	int rand = (Math.random() * 10);
+            	int rand = (int)(Math.random() * 10);
                 if (rand % 10 > 4) {
                     tab[i][j] = new Case(Contenu.Vide);
                 } else {
