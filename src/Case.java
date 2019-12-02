@@ -2,6 +2,7 @@ public class Case {
 	
 private Contenu c;
 private boolean amorce;
+private boolean explo;
 
 public Case(Contenu c) {
 	amorce=false;
@@ -13,12 +14,14 @@ public void amorcage() {
 }
 
 public void deflagration(int portee) {
-	c=Contenu.Explo;
+	/*c=Contenu.Explo;*/
+	explo=true;
 	amorce=false;
 }
 
 public void finBoom() {
-	c=Contenu.Vide;
+	/*c=Contenu.Vide;*/
+	explo=false;
 }
 
 public void fire() {
@@ -30,5 +33,8 @@ public Contenu getC() {
 }
 public void setC(Contenu cont) {
 	c=cont;
+}
+public void setExplo() {
+	explo=true;
 }
 }
