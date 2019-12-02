@@ -37,12 +37,17 @@ public class Plateau {
 	}
 	
 	public void deplacement(int x,int y, int i, int j) { //plus du genre a se tp
+		System.out.println("1");
 		if (i<taille && j<taille && i>0 && j>0) {
+			System.out.println("2");
 			if(tab[x][y].getC() == Contenu.Perso) {
+
+				System.out.println("3");
 				if(tab[i][j].getC()== Contenu.Vide) {
-					Case transi = tab[x][y];
-					tab[x][y]=tab[i][j];
-					tab[i][j]=transi;
+
+					System.out.println("4");
+					tab[x][y].setC(Contenu.Vide);
+					tab[i][j].setC(Contenu.Perso);
 				}
 			}
 		}

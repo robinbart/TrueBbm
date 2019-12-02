@@ -47,6 +47,7 @@ public void run() {
 		if(e==39) {
 			System.out.print("test2");
 			if(y<p.getSize() && p.getTab(x,y).getC()==Contenu.Vide) {
+				System.out.println("0");
 				p.deplacement(x, y, x, y+1);
 				try{
 					synchronized (m){
