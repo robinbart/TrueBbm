@@ -18,8 +18,6 @@ public class Plateau {
 		}
 	}
 
-
-
 	public Case getTab(int x,int y) {
 		return tab[x][y];
 	}

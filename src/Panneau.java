@@ -26,18 +26,31 @@ public class Panneau extends JPanel{
 		for(int i = 0; i < pl.getSize();i++) {
 			for(int j = 0; j < pl.getSize() ; j++) {
 				if(pl.getTab(i,j).getC()==Contenu.Vide) {
-					g.setColor(Color.green);
-					g.fillRect(i*100, j*100, 100, 100);
+					if (pl.getTab(i, j).isExplo()) {
+						g.setColor(Color.red);
+					} else {
+						g.setColor(Color.green);
+					}
+					g.fillRect(i * 100, j * 100, 100, 100);
 				}else {
 					if(pl.getTab(i,j).getC()==Contenu.Mur) {
 						g.setColor(Color.black);
 						g.fillRect(i*100, j*100, 100, 100);
 					}else {
 						if(pl.getTab(i,j).getC()==Contenu.Perso) {
-							g.drawImage(img, i*100, j*100,(i+1)*100 , (j+1)*100, 196, 0, 222,
-									34,Color.green,  this);
+							if (pl.getTab(i, j).isExplo()) {
+								g.drawImage(img, i*100, j*100,(i+1)*100 , (j+1)*100, 196, 0, 222,
+										34,Color.red,  this);
+							}
+							else {
+								g.drawImage(img, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
+										34, Color.green, this);
+							}
 						}
 					}
+				}
+				if(pl.getTab(i, j).isAmorce()){			//TODO: C'est de la merde
+					g.fillOval(i*100, j*100, 100, 100);
 				}
 			}
 		}

@@ -1,40 +1,46 @@
 public class Case {
-	
-private Contenu c;
-private boolean amorce;
-private boolean explo;
 
-public Case(Contenu c) {
-	amorce=false;
-	this.c=c;
-}
+	private Contenu c;
+	private boolean amorce;
+	private boolean explo;
 
-public void amorcage() {
-	amorce=true;
-}
+	public Case(Contenu c) {
+		amorce = false;
+		this.c = c;
+	}
 
-public void deflagration(int portee) {
-	/*c=Contenu.Explo;*/
-	explo=true;
-	amorce=false;
-}
+	public void amorcage() {
+		amorce = true;
+	}
 
-public void finBoom() {
-	/*c=Contenu.Vide;*/
-	explo=false;
-}
+	public void deflagration(int portee) {
+		/*c=Contenu.Explo;*/
+		explo = true;
+		amorce = false;
+	}
 
-public void fire() {
-	
-}
+	public void finBoom() {
+		/*c=Contenu.Vide;*/
+		explo = false;
+	}
 
-public Contenu getC() {
-	return c;
-}
-public void setC(Contenu cont) {
-	c=cont;
-}
-public void setExplo() {
-	explo=true;
-}
+	public Contenu getC() {
+		return c;
+	}
+
+	public void setC(Contenu cont) {
+		c = cont;
+	}
+
+	public void setExplo() {
+		explo = true;
+	}
+
+	public boolean isAmorce() {
+		return amorce;
+	}
+
+	public boolean isExplo() {
+		return explo;
+	}
 }
