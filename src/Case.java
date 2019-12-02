@@ -6,6 +6,7 @@ public class Case {
 
     public Case(Contenu c) {
         amorce = false;
+        explo = false;
         this.c = c;
     }
 
