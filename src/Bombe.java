@@ -15,8 +15,9 @@ public Bombe(int portee, Plateau p, int x, int y) {
 public void run() {
 	try{
 		p.getTab(x, y).amorcage();
-		Thread.sleep(3000);
+		Thread.sleep(300);
 		p.explosion(portee,x,y);;
+		System.out.println("J'EXPLOSE EN COURS");
 		Thread.sleep(1000);
 		p.finexplo(portee,x,y);
 	}catch(InterruptedException e) {

@@ -48,30 +48,31 @@ public class Plateau {
 		}
 	}
 	public void explosion(int portee, int x, int y) {
+		tab[x][y].deflag();
 		for(int j=1;j<portee;j++) {
-			if(tab[x][y+j].getC()==Contenu.Vide || tab[x][y+j].getC()==Contenu.Perso) {
-				tab[x][+j].setExplo();
+			if(tab[x][Math.min(y+j, taille - 1)].getC()==Contenu.Vide || tab[x][Math.min(y+j, taille - 1)].getC()==Contenu.Perso) {
+				tab[x][Math.min(y+j, taille - 1)].setExplo();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x][y-j].getC()==Contenu.Vide || tab[x][y-j].getC()==Contenu.Perso) {
-				tab[x][y-j].setExplo();
+			if(tab[x][Math.max(y-j, 0)].getC()==Contenu.Vide || tab[x][Math.max(y-j, 0)].getC()==Contenu.Perso) {
+				tab[x][Math.max(y-j, 0)].setExplo();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x+j][y].getC()==Contenu.Vide || tab[x+j][y].getC()==Contenu.Perso) {
-				tab[x+j][y].setExplo();
+			if(tab[Math.min(x+j, taille - 1)][y].getC()==Contenu.Vide || tab[Math.min(x+j, taille - 1)][y].getC()==Contenu.Perso) {
+				tab[Math.min(x+j, taille - 1)][y].setExplo();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x-j][j].getC()==Contenu.Vide || tab[x-j][y].getC()==Contenu.Perso) {
-				tab[x-j][j].setExplo();
+			if(tab[Math.max(x-j, 0)][j].getC()==Contenu.Vide || tab[Math.max(x-j, 0)][y].getC()==Contenu.Perso) {
+				tab[Math.max(x-j, 0)][j].setExplo();
 			}else {
 				break;
 			}
@@ -80,32 +81,33 @@ public class Plateau {
 
 	public void finexplo(int portee, int x, int y) {
 		for(int j=1;j<portee;j++) {
-			if(tab[x][y+j].getC()==Contenu.Vide || tab[x][y+j].getC()==Contenu.Perso) {
-				tab[x][+j].finBoom();
+			if(tab[x][Math.min(y+j, taille - 1)].getC()==Contenu.Vide || tab[x][Math.min(y+j, taille - 1)].getC()==Contenu.Perso) {
+				tab[x][Math.min(y+j, taille - 1)].finBoom();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x][y-j].getC()==Contenu.Vide || tab[x][y-j].getC()==Contenu.Perso) {
-				tab[x][y-j].finBoom();
+			if(tab[x][Math.max(y-j, 0)].getC()==Contenu.Vide || tab[x][Math.max(y-j, 0)].getC()==Contenu.Perso) {
+				tab[x][Math.max(y-j, 0)].finBoom();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x+j][y].getC()==Contenu.Vide || tab[x+j][y].getC()==Contenu.Perso) {
-				tab[x+j][y].finBoom();
+			if(tab[Math.min(x+j, taille - 1)][y].getC()==Contenu.Vide || tab[Math.min(x+j, taille - 1)][y].getC()==Contenu.Perso) {
+				tab[Math.max(x+j, taille - 1)][y].finBoom();
 			}else {
 				break;
 			}
 		}
 		for(int j=1;j<portee;j++) {
-			if(tab[x-j][j].getC()==Contenu.Vide || tab[x-j][y].getC()==Contenu.Perso) {
-				tab[x-j][j].finBoom();
+			if(tab[Math.max(x-j, 0)][j].getC()==Contenu.Vide || tab[Math.max(x-j, 0)][y].getC()==Contenu.Perso) {
+				tab[Math.max(x-j, 0)][j].finBoom();
 			}else {
 				break;
 			}
 		}
+		tab[x][y].finBoom();
 	}
 }

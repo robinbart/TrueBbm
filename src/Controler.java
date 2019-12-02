@@ -14,7 +14,7 @@ public class Controler implements KeyListener{
 	 public void keyPressed(KeyEvent e) {
 	 	System.out.println(""+e.getKeyCode());
 	 	int kc= e.getKeyCode();
-	 	if(kc==37 || kc==38 || kc==39 || kc==40) {
+	 	if(kc==37 || kc==38 || kc==39 || kc==40 || kc == 65) {
 	 		p.changerE(kc);	
 	 	}
 	 }

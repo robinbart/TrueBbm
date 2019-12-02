@@ -13,10 +13,9 @@ public class Case {
 		amorce = true;
 	}
 
-	public void deflagration(int portee) {
-		/*c=Contenu.Explo;*/
-		explo = true;
+	public void deflag() {
 		amorce = false;
+		explo = true;
 	}
 
 	public void finBoom() {

@@ -12,7 +12,7 @@ public class Perso implements Runnable{
 	private int beffect;
 	private Plateau p;
 	private int x, y;
-	private int portee;
+	private int portee = 3; //TODO: dans constructeur
 	private int e = 0;
 
 	public Perso(Plateau p, int x,int y) {
@@ -41,27 +41,24 @@ public class Perso implements Runnable{
 
 	public void run() {
 		while(true) {
-		/*if() {
-			Bombe b = new Bombe();
-			Thread t = new Thread(b);
-			
-		}*/
-
 			if (e == 65) {
+				System.out.println("J'ai amorcé");
 				Bombe b = new Bombe(portee, p, x, y);
 				Thread t = new Thread(b);
 				t.start();
+				try {
+					synchronized (m) {
+						m.wait();
+					}
+				} catch (InterruptedException ignored) {}
 			}
 			if (e == 40) {//vers le bas
-				System.out.print("test2");
-				System.out.println("0");
 				p.deplacement(this, x, y, x, y + 1);
 				try {
 					synchronized (m) {
 						m.wait();
 					}
-				} catch (InterruptedException ignored) {
-				}
+				} catch (InterruptedException ignored) {}
 			}
 			if(e==37) { //
 				p.deplacement(this, x, y, x - 1, y);

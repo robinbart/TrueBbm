@@ -49,8 +49,9 @@ public class Panneau extends JPanel{
 						}
 					}
 				}
-				if(pl.getTab(i, j).isAmorce()){			//TODO: C'est de la merde
-					g.fillOval(i*100, j*100, 100, 100);
+				if(pl.getTab(i, j).isAmorce()){
+					g.setColor(Color.black);
+					g.fillOval(i*100 + 25, j*100 + 25, 50, 50);
 				}
 			}
 		}
