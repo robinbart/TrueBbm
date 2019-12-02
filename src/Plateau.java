@@ -37,7 +37,6 @@ public class Plateau {
         if (i < taille && j < taille && i >= 0 && j >= 0) {
             if (tab[x][y].getC() == Contenu.Perso) {
                 if (tab[i][j].getC() == Contenu.Vide) {
-
                     System.out.println("4");
                     tab[x][y].setC(Contenu.Vide);
                     tab[i][j].setC(Contenu.Perso);
