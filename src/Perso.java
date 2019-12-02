@@ -38,14 +38,13 @@ public void run() {
 			Thread t = new Thread(b);
 			
 		}*/
-		System.out.println("jeznfiuoezjnf");
 
 		if(e==65) {
 			Bombe b = new Bombe(portee,p,x,y);
 			Thread t = new Thread(b);
 			t.start();
 		}
-		if(this.e==39) {
+		if(e==39) {
 			System.out.print("test2");
 			if(y<p.getSize() && p.getTab(x,y).getC()==Contenu.Vide) {
 				p.deplacement(x, y, x, y+1);
