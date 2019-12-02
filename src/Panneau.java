@@ -8,13 +8,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class Panneau extends JPanel{
-	
-	private int x=0;
-	private int y=0;
-	public Image img;
+
+	private Image img;
 	private Plateau pl;
 
-	public Panneau(Plateau pl) {
+	Panneau(Plateau pl) {
 		super();
 		this.pl=pl;
 		try {
@@ -22,11 +20,6 @@ public class Panneau extends JPanel{
 		} catch(IOException e){
 			System.out.print(e.getMessage());
 		}
-	}
-	
-	public void adaptation(int x, int y) {
-		this.x=x;
-		this.y=y;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -41,7 +34,8 @@ public class Panneau extends JPanel{
 						g.fillRect(i*100, j*100, 100, 100);
 					}else {
 						if(pl.getTab(i,j).getC()==Contenu.Perso) {
-							g.drawImage(img, i*100, j*100,(i+1)*100 , (j+1)*100, 196, 0, 222, 34,Color.green,  this);
+							g.drawImage(img, i*100, j*100,(i+1)*100 , (j+1)*100, 196, 0, 222,
+									34,Color.green,  this);
 						}
 					}
 				}
