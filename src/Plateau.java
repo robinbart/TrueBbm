@@ -55,11 +55,12 @@ public class Plateau {
         tab[x][y].deflag();
         System.out.println("x : "+x+" et y : "+y);
         for (int j = 1; j < portee; j++) {
-            if (tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Vide || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso) {
-                tab[x][Math.min(y + j, taille - 1)].setExplo();
-                System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
+            if (tab[x][y + j].getC() == Contenu.Vide || tab[x][Math.min(y + j, taille - 1)].getC() == Contenu.Perso || 
+            		y+j < taille) {
+                tab[x][y + j].setExplo();
+                //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
             } else { 
-            	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+            	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
             	if (tab[x][Math.min(y + j, taille - 1)].getC()==Contenu.Mur_Cassable) {
             		tab[x][Math.min(y + j, taille - 1)].casse();
             	}
@@ -67,11 +68,12 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[x][Math.max(y - j, 0)].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso) {
-                tab[x][Math.max(y - j, 0)].setExplo();
-                System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
+            if (tab[x][y - j].getC() == Contenu.Vide || tab[x][Math.max(y - j, 0)].getC() == Contenu.Perso ||
+            		y - j > 0) {
+                tab[x][y - j].setExplo();
+                //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
-            	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+            	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
             	if (tab[x][Math.max(y - j, 0)].getC()==Contenu.Mur_Cassable) {
             		tab[x][Math.max(y - j, 0)].casse();
             	}
@@ -79,9 +81,10 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso) {
-                tab[Math.min(x + j, taille - 1)][y].setExplo();
-                System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
+            if (tab[x + j][y].getC() == Contenu.Vide || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso ||
+            		x+j < taille) {
+                tab[x + j][y].setExplo();
+                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
             	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x + j, 0)+" et y : "+y);
             	if (tab[Math.min(x + j, taille - 1)][y].getC()==Contenu.Mur_Cassable) {
@@ -91,11 +94,12 @@ public class Plateau {
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (tab[Math.max(x - j, 0)][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso) {
-                tab[Math.max(x - j, 0)][y].setExplo();
-                System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
+            if (tab[x - j][y].getC() == Contenu.Vide || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso ||
+            		x - j > 0) {
+                tab[x - j][y].setExplo();
+                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
-            	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
+            	//System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
             	if (tab[Math.max(x - j, 0)][y].getC()==Contenu.Mur_Cassable) {
             		tab[Math.max(x - j, 0)][y].casse();
             	}
