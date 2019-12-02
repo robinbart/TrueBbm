@@ -19,7 +19,7 @@ public class Controler implements KeyListener {
             p.changerE(kc);
         }
         if(kc == 90){
-            System.out.println("Tu as gagné !");
+            System.out.println("Axel is better than Barth in english !");
             p.changerE(kc);
         }
     }

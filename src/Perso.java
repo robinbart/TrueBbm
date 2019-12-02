@@ -5,11 +5,11 @@ public class Perso implements Runnable {
     private static int compteur = 0;
     private final Object m = new Object();
     private int id;
-    private int beffect;
     private Plateau p;
     private int x, y;
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
+    private int vie = 3; //TODO: dans constructeur
 
     public Perso(Plateau p, int x, int y) {
         synchronized (m) {
@@ -19,6 +19,10 @@ public class Perso implements Runnable {
         p.spawn(x, y);
         this.x = x;
         this.y = y;
+    }
+
+    public void perdVie() {
+        vie--;
     }
 
     public void changerE(int KeyCode) {

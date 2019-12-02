@@ -28,6 +28,7 @@ public class Case {
 
     public synchronized void finBoom() {
     	explosimultane--;
+        System.out.println(explosimultane);
     	if(explosimultane==0) {
     		explo = false;
     	}
