@@ -114,7 +114,7 @@ public class Plateau extends Object{
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (y-j > 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
+            if (y-j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
                 tab[x][y - j].finBoom();
             } else {
                 break;
@@ -128,7 +128,7 @@ public class Plateau extends Object{
             }
         }
         for (int j = 1; j < portee; j++) {
-            if (x-j > 0 && (tab[x - j][y].getC() == Contenu.Vide || tab[x - j][y].getC() == Contenu.Perso)) {
+            if (x-j >= 0 && (tab[x - j][y].getC() == Contenu.Vide || tab[x - j][y].getC() == Contenu.Perso)) {
                 tab[x - j][y].finBoom();
             } else {
                 break;
