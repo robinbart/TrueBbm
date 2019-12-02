@@ -3,25 +3,34 @@ public class Case {
     private Contenu c;
     private boolean amorce;
     private boolean explo;
+    private int explosimultane;
 
     public Case(Contenu c) {
+        this.c = c;
         amorce = false;
         explo = false;
-        this.c = c;
+        explosimultane=0;
+    }
+    
+    public void casse() {
+    	c=Contenu.Vide;
     }
 
     public void amorcage() {
         amorce = true;
     }
 
-    public void deflag() {
+    public synchronized void deflag() {
         amorce = false;
         explo = true;
+        explosimultane++;
     }
 
-    public void finBoom() {
-        /*c=Contenu.Vide;*/
-        explo = false;
+    public synchronized void finBoom() {
+    	explosimultane--;
+    	if(explosimultane==0) {
+    		explo = false;
+    	}
     }
 
     public Contenu getC() {
@@ -32,8 +41,9 @@ public class Case {
         c = cont;
     }
 
-    public void setExplo() {
+    public synchronized void setExplo() {
         explo = true;
+        explosimultane++;
     }
 
     public boolean isAmorce() {

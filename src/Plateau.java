@@ -60,6 +60,9 @@ public class Plateau {
                 System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
             } else { 
             	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+            	if (tab[x][Math.min(y + j, taille - 1)].getC()==Contenu.Mur_Cassable) {
+            		tab[x][Math.min(y + j, taille - 1)].casse();
+            	}
                 break;
             }
         }
@@ -69,7 +72,10 @@ public class Plateau {
                 System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
             	System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
-                break;
+            	if (tab[x][Math.max(y - j, 0)].getC()==Contenu.Mur_Cassable) {
+            		tab[x][Math.max(y - j, 0)].casse();
+            	}
+            	break;
             }
         }
         for (int j = 1; j < portee; j++) {
@@ -78,6 +84,9 @@ public class Plateau {
                 System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
             	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x + j, 0)+" et y : "+y);
+            	if (tab[Math.min(x + j, taille - 1)][y].getC()==Contenu.Mur_Cassable) {
+            		tab[Math.min(x + j, taille - 1)][y].casse();
+            	}
                 break;
             }
         }
@@ -87,6 +96,9 @@ public class Plateau {
                 System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
             	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
+            	if (tab[Math.max(x - j, 0)][y].getC()==Contenu.Mur_Cassable) {
+            		tab[Math.max(x - j, 0)][y].casse();
+            	}
                 break;
             }
         }

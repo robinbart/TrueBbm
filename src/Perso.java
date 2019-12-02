@@ -42,21 +42,21 @@ public class Perso implements Runnable {
                 Bombe b = new Bombe(portee, p, x, y);
                 Thread t = new Thread(b);
                 t.start();
-                try {
+                /*try {
                     synchronized (m) {
                         m.wait();
                     }
                 } catch (InterruptedException ignored) {
-                }
+                }*/
             }
             if (e == 40) {//vers le bas
                 p.deplacement(this, x, y, x, y + 1);
-                try {
+                /*try {
                     synchronized (m) {
                         m.wait();
                     }
                 } catch (InterruptedException ignored) {
-                }
+                }*/
             }
             if (e == 37) { //
                 p.deplacement(this, x, y, x - 1, y);
