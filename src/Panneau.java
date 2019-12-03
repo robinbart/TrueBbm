@@ -72,8 +72,10 @@ public class Panneau extends JPanel {
                     }
                 }
                 if (pl.getTab(i, j).isAmorce()) {
-                    g.setColor(Color.black);
-                    g.fillOval(i * 100 + 25, j * 100 + 25, 50, 50);
+                    /*g.setColor(Color.black);
+                    g.fillOval(i * 100 + 25, j * 100 + 25, 50, 50);*/
+                    g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100,0, 101, 100,
+                            201, this);
                 }
                 
             }
@@ -85,7 +87,7 @@ public class Panneau extends JPanel {
         }
     	vie = pl.getPerso().getVie();
     	for(int i = 0; i <3 ; i++) {
-    		if(i<=vie) {
+    		if(i<vie) {
     			g.drawImage(img2, i * 40, 0, (i + 1) * 40,40, 384, 101, 464,
                         180, this);
     		}else {
