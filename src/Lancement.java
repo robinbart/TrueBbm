@@ -1,4 +1,4 @@
-public class Lancement {
+ public class Lancement {
     public static void main(String[] args) throws InterruptedException {
 		/*Perso p1 = new Perso();
 		Thread t = new Thread(p1);

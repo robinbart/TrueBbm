@@ -1,4 +1,4 @@
-public class Plateau extends Object{
+ public class Plateau extends Object{
 
     private Case[][] tab;
     private int taille;

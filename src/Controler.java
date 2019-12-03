@@ -7,7 +7,7 @@ public class Controler implements KeyListener {
 
     public Controler(Perso p) {
         this.p = p;
-    }
+    } 
 
     public void keyTyped(KeyEvent e) {
     }

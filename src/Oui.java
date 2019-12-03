@@ -1,4 +1,4 @@
-import javax.swing.*;
+ import javax.swing.*;
 import java.awt.event.WindowEvent;
 
 public class Oui extends JFrame implements Runnable {
