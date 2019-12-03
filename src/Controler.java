@@ -12,10 +12,14 @@ public class Controler implements KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e){
         System.out.println("" + e.getKeyCode());
         int kc = e.getKeyCode();
-        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 65) {
+        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 65 || kc == 18) {
+            p.changerE(kc);
+        }
+        if(kc == 90){
+            System.out.println("Axel is better than Barth in english !");
             p.changerE(kc);
         }
     }

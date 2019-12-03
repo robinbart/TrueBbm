@@ -20,6 +20,7 @@ public class Case {
         amorce = true;
     }
 
+
     public synchronized void deflag() {
         amorce = false;
         explo = true;
@@ -27,7 +28,10 @@ public class Case {
     }
 
     public synchronized void finBoom() {
-    	explosimultane--;
+    	if(explosimultane != 0){
+    	    explosimultane--;
+        }
+        System.out.println(explosimultane);
     	if(explosimultane==0) {
     		explo = false;
     	}
@@ -53,4 +57,5 @@ public class Case {
     public boolean isExplo() {
         return explo;
     }
+
 }

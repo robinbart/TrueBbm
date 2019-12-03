@@ -14,7 +14,12 @@ public class Bombe implements Runnable {
     public void run() {
         try {
             p.getTab(x, y).amorcage();
-            Thread.sleep(1500);
+            try {
+                Thread.sleep(2000);
+            }
+            catch (InterruptedException e){
+                System.out.println("Je continue");
+            }
             p.explosion(portee, x, y);
 			System.out.println("J'EXPLOSE EN COURS");
             Thread.sleep(1000);
@@ -22,5 +27,13 @@ public class Bombe implements Runnable {
         } catch (InterruptedException e) {
             System.out.println("Sleep bombe bugue");
         }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
