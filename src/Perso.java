@@ -11,7 +11,7 @@ public class Perso implements Runnable {
     private boolean immune = false;
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
-    private int vie = 3; //TODO: dans constructeur
+    private int vie = 1; //TODO: dans constructeur
     private boolean damageTaken=false;
     
     
@@ -134,4 +134,12 @@ public class Perso implements Runnable {
 		// TODO Auto-generated method stub
 		return damageTaken;
 	}
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

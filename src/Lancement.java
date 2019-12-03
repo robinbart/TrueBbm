@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Lancement {
     public static void main(String[] args) throws InterruptedException {
@@ -7,13 +8,31 @@ public class Lancement {
 		t.start();*/
 		boolean created = true;
         Oui fen = null;
+        int NB_PERSO = 1;
         while (true){
             Plateau p = new Plateau(10);
             Perso p1 = new Perso(p, 0, 0);
-            if(!created){
-                fen.setP(p, p1);
+            ArrayList<Perso> persos = new ArrayList<>();
+            for (int i = 0; i < NB_PERSO; i++){
+                switch (i){
+                    case 0:
+                        persos.add(new Perso(p, 0, 0));
+                        break;
+                    case 1:
+                        persos.add(new Perso(p, 10, 10));
+                        break;
+                    case 2:
+                        persos.add(new Perso(p, 0, 10));
+                        break;
+                    case 3:
+                        persos.add(new Perso(p, 10, 0));
+                        break;
+                }
             }
-            p.addPerso(p1);
+            if(!created){
+                fen.setP(p, persos);
+            }
+            p.addPerso(persos);
             //Perso p2 = new Perso(p, 9, 9);
             Thread t1 = new Thread(p1);
             t1.start();
@@ -21,7 +40,7 @@ public class Lancement {
             //t2.start();
 
             if(created) {
-                fen = new Oui(p, p1);
+                fen = new Oui(p, persos);
                 Thread t3 = new Thread(fen);
                 t3.start();
                 created = false;

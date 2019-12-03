@@ -1,16 +1,17 @@
  import javax.swing.*;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
+ import java.util.ArrayList;
 
-public class Oui extends JFrame implements Runnable {
+ public class Oui extends JFrame implements Runnable {
 
     private Panneau p;
     private Plateau pl;
-    private Perso p1;
+    private ArrayList<Perso> p1;
     private Controler c;
 
-    public Oui(Plateau pl, Perso p1) {
-        c = new Controler(p1);
+    public Oui(Plateau pl, ArrayList<Perso> p1) {
+        c = new Controler(p1.get(0));
         this.p1 = p1;
         this.pl = pl;
         p = new Panneau(pl);
@@ -27,8 +28,8 @@ public class Oui extends JFrame implements Runnable {
         int height = (int)dimension.getHeight();
         int width = (int)dimension.getWidth();*/
 
-    public void setP(Plateau pl, Perso p1){
-        c = new Controler(p1);
+    public void setP(Plateau pl, ArrayList<Perso> p1){
+        c = new Controler(p1.get(0));
         this.p1 = p1;
         this.pl = pl;
         p = new Panneau(pl);
