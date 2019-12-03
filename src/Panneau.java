@@ -1,4 +1,4 @@
- import javax.imageio.ImageIO;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -6,14 +6,25 @@ import java.io.IOException;
 
 public class Panneau extends JPanel {
 
-    private Image img;
+    private Image img1;
+    private Image img2;
     private Plateau pl;
+    private int caseherbe;
+    private int tabcase[][];
 
     Panneau(Plateau pl) {
         super();
+        int taille =pl.getSize();
+        tabcase =new int[taille][taille];
+        for(int i = 0; i < taille; i++ ) {
+        	for(int j = 0; j < taille; j++) {
+        		tabcase[i][j] = (int)(Math.random()*7);
+        	}
+        }
         this.pl = pl;
         try {
-            this.img = ImageIO.read(new File("testsprite1.png"));
+            this.img1 = ImageIO.read(new File("testsprite1.png"));
+            this.img2 = ImageIO.read(new File("testsprite2.png"));
         } catch (IOException e) {
             System.out.print(e.getMessage());
         }
@@ -25,10 +36,14 @@ public class Panneau extends JPanel {
                 if (pl.getTab(i, j).getC() == Contenu.Vide) {
                     if (pl.getTab(i, j).isExplo()) {
                         g.setColor(Color.red);
+                        g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0, 202, 100,
+                                302, Color.red, this);
                     } else {
                         g.setColor(Color.green);
+                        g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0+(tabcase[i][j]*101), 0, 100+(tabcase[i][j]*101),
+                                100, Color.red, this);
                     }
-                    g.fillRect(i * 100, j * 100, 100, 100);
+                   
                 } else {
                     if (pl.getTab(i, j).getC() == Contenu.Mur) {
                         g.setColor(Color.black);
@@ -39,11 +54,11 @@ public class Panneau extends JPanel {
                             g.fillRect(i * 100, j * 100, 100, 100);
                     	}else {
                             if (pl.getTab(i, j).isExplo()) {
-                                g.drawImage(img, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
-                                        34, Color.red, this);
+                                g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
+                                        34, this);
                             } else {
-                                g.drawImage(img, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
-                                        34, Color.green, this);
+                                g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
+                                        34, this);
                             }
                         }
                     }
