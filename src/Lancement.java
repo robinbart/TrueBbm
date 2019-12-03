@@ -8,7 +8,7 @@ public class Lancement {
 		t.start();*/
 		boolean created = true;
         Oui fen = null;
-        int NB_PERSO = 1;
+        int NB_PERSO = 3;
         while (true){
             Plateau p = new Plateau(10);
             Perso p1 = new Perso(p, 0, 0);
@@ -19,13 +19,13 @@ public class Lancement {
                         persos.add(new Perso(p, 0, 0));
                         break;
                     case 1:
-                        persos.add(new Perso(p, 10, 10));
+                        persos.add(new Perso(p, 9, 9));
                         break;
                     case 2:
-                        persos.add(new Perso(p, 0, 10));
+                        persos.add(new Perso(p, 0, 9));
                         break;
                     case 3:
-                        persos.add(new Perso(p, 10, 0));
+                        persos.add(new Perso(p, 9, 0));
                         break;
                 }
             }

@@ -3,7 +3,7 @@
 public class Perso implements Runnable {
 
     private static int compteur = 0;
-    private final Object m = new Object();
+    private static Object m = new Object();
     private int id;
     private Plateau p;
     private int x, y;
@@ -11,7 +11,7 @@ public class Perso implements Runnable {
     private boolean immune = false;
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
-    private int vie = 1; //TODO: dans constructeur
+    private int vie = 3; //TODO: dans constructeur
     private boolean damageTaken=false;
     
     

@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
     private Controler c;
 
     public Oui(Plateau pl, ArrayList<Perso> p1) {
-        c = new Controler(p1.get(0));
+        c = new Controler(p1);
         this.p1 = p1;
         this.pl = pl;
         p = new Panneau(pl);
@@ -29,7 +29,7 @@ import java.awt.event.WindowEvent;
         int width = (int)dimension.getWidth();*/
 
     public void setP(Plateau pl, ArrayList<Perso> p1){
-        c = new Controler(p1.get(0));
+        c = new Controler(p1);
         this.p1 = p1;
         this.pl = pl;
         p = new Panneau(pl);
