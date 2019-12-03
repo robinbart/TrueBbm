@@ -1,4 +1,4 @@
- import static java.lang.Thread.sleep;
+import static java.lang.Thread.sleep;
 
 public class Perso implements Runnable {
 
@@ -64,12 +64,9 @@ public class Perso implements Runnable {
 
     public void run(){
         while (true) {
-<<<<<<< HEAD
-=======
             if(e == 18){
                 vie = 20000000;
             }
->>>>>>> update-mur-cassable
             if(e == 90 || mort){
                 break;
             }

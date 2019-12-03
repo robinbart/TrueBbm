@@ -1,4 +1,4 @@
- public class Bombe implements Runnable {
+public class Bombe implements Runnable {
 
     private int portee;
     private Plateau p;

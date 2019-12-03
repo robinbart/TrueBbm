@@ -20,6 +20,10 @@ public class Oui extends JFrame implements Runnable {
         this.setContentPane(p);
         this.setVisible(true);
         this.addKeyListener(c);
+        /*
+        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int height = (int)dimension.getHeight();
+        int width = (int)dimension.getWidth();*/
     }
 
     public void setP(Plateau pl, Perso p1){
