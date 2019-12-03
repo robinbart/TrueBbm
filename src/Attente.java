@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- import static java.lang.Thread.sleep;
-=======
 import static java.lang.Thread.sleep;
->>>>>>> update-mur-cassable
 
 public class Attente implements Runnable{
     private int temps;
