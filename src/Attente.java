@@ -1,3 +1,4 @@
+ import static java.lang.Thread.sleep;
 import static java.lang.Thread.sleep;
 
 public class Attente implements Runnable{
@@ -12,6 +13,7 @@ public class Attente implements Runnable{
         try {
             sleep(temps);
             p.setImmune();
+            p.setDamageTaken(false);
         }
         catch (InterruptedException e){
             System.err.println("Erreur in attente");

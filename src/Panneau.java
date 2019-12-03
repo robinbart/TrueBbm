@@ -11,6 +11,7 @@ public class Panneau extends JPanel {
     private Plateau pl;
     private int caseherbe;
     private int tabcase[][];
+    private int clignotement=0;
 
     Panneau(Plateau pl) {
         super();
@@ -35,11 +36,9 @@ public class Panneau extends JPanel {
             for (int j = 0; j < pl.getSize(); j++) {
                 if (pl.getTab(i, j).getC() == Contenu.Vide) {
                     if (pl.getTab(i, j).isExplo()) {
-                        g.setColor(Color.red);
                         g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0, 202, 100,
                                 302, Color.red, this);
                     } else {
-                        g.setColor(Color.green);
                         g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0+(tabcase[i][j]*101), 0, 100+(tabcase[i][j]*101),
                                 100, Color.red, this);
                     }
@@ -54,11 +53,15 @@ public class Panneau extends JPanel {
                             g.fillRect(i * 100, j * 100, 100, 100);
                     	}else {
                             if (pl.getTab(i, j).isExplo()) {
-                                g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
-                                        34, this);
+                                 g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0, 202, 100,
+                                         302, Color.red, this);
                             } else {
-                                g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
-                                        34, this);
+                                g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0+(tabcase[i][j]*101), 0, 100+(tabcase[i][j]*101),
+                                        100, Color.red, this);
+                            }
+                            if(clignotement%2==0) {
+                            	g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
+                                    34, this);
                             }
                         }
                     }
@@ -67,7 +70,13 @@ public class Panneau extends JPanel {
                     g.setColor(Color.black);
                     g.fillOval(i * 100 + 25, j * 100 + 25, 50, 50);
                 }
+                
             }
+        }
+        if(pl.getDamageTaken()) {
+            clignotement++;
+        }else {
+        	clignotement=0;
         }
 
         //g.drawImage(img, x, y, x+75, y+93, 197, 1, 219, 32,Color.green,  this);

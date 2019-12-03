@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Plateau extends Object{
@@ -28,6 +29,13 @@ public class Plateau extends Object{
         }
     }
 
+    public void damageTaken(Perso p) {
+    }
+    
+    public boolean getDamageTaken() {
+    	return p1.getDamageTaken();
+    }
+    
     public void addPerso(Perso p){
         p1 = p;
     }
@@ -159,8 +167,7 @@ public class Plateau extends Object{
                 if(tab[x - j][y].getC() == Contenu.Perso){
                     System.out.println("je perd un point "+p1.getVie() + " a gauche");
                     p1.perdVie();
-                }
-                if(tab[x - j][y].isAmorce()) {
+                }   if(tab[x - j][y].isAmorce()) {
                     for(int i = 0; i < bombes.size(); i++){
                         if(bombes.get(i).getX() == x - j && bombes.get(i).getY() == y){
                             th.get(i).interrupt();

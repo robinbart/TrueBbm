@@ -1,3 +1,4 @@
+
 public class Lancement {
     public static void main(String[] args) throws InterruptedException {
 		/*Perso p1 = new Perso();

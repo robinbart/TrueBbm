@@ -1,4 +1,4 @@
-import static java.lang.Thread.sleep;
+ import static java.lang.Thread.sleep;
 
 public class Perso implements Runnable {
 
@@ -12,7 +12,9 @@ public class Perso implements Runnable {
     private int portee = 3; //TODO: dans constructeur
     private int e = 0;
     private int vie = 3; //TODO: dans constructeur
-
+    private boolean damageTaken=false;
+    
+    
     public Perso(Plateau p, int x, int y) {
         synchronized (m) {
             id = compteur++;
@@ -39,6 +41,9 @@ public class Perso implements Runnable {
                 }
             }
             immune = true;
+        	damageTaken=true;
+            
+        
             new Thread(new Attente(1000, this)).start();
         }
 
@@ -117,4 +122,15 @@ public class Perso implements Runnable {
             }
         }
     }
+
+	public void setDamageTaken(boolean b) {
+		// TODO Auto-generated method stub
+		damageTaken=b;
+		
+	}
+
+	public boolean getDamageTaken() {
+		// TODO Auto-generated method stub
+		return damageTaken;
+	}
 }

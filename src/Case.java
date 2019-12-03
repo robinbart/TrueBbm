@@ -1,4 +1,4 @@
-public class Case {
+ public class Case {
 
     private Contenu c;
     private boolean amorce;
