@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- import javax.swing.*;
-=======
 import javax.swing.*;
->>>>>>> update-mur-cassable
 import java.awt.event.WindowEvent;
 
 public class Oui extends JFrame implements Runnable {
@@ -24,13 +20,6 @@ public class Oui extends JFrame implements Runnable {
         this.setContentPane(p);
         this.setVisible(true);
         this.addKeyListener(c);
-<<<<<<< HEAD
-=======
-        /*
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int)dimension.getHeight();
-        int width = (int)dimension.getWidth();*/
->>>>>>> update-mur-cassable
     }
 
     public void setP(Plateau pl, Perso p1){
