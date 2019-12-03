@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- public class Lancement {
-=======
 public class Lancement {
->>>>>>> update-mur-cassable
     public static void main(String[] args) throws InterruptedException {
 		/*Perso p1 = new Perso();
 		Thread t = new Thread(p1);
