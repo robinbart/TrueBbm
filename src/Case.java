@@ -20,6 +20,7 @@
         amorce = true;
     }
 
+
     public synchronized void deflag() {
         amorce = false;
         explo = true;
@@ -56,4 +57,5 @@
     public boolean isExplo() {
         return explo;
     }
+
 }

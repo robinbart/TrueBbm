@@ -64,6 +64,12 @@ public class Perso implements Runnable {
 
     public void run(){
         while (true) {
+<<<<<<< HEAD
+=======
+            if(e == 18){
+                vie = 20000000;
+            }
+>>>>>>> update-mur-cassable
             if(e == 90 || mort){
                 break;
             }
@@ -72,6 +78,7 @@ public class Perso implements Runnable {
                 Bombe b = new Bombe(portee, p, x, y);
                 Thread t = new Thread(b);
                 t.start();
+                p.setBombe(t, b);
                 /*try {
                     synchronized (m) {
                         m.wait();

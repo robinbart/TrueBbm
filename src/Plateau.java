@@ -1,9 +1,20 @@
+<<<<<<< HEAD
  public class Plateau extends Object{
+=======
+import java.util.ArrayList;
+
+public class Plateau extends Object{
+>>>>>>> update-mur-cassable
 
     private Case[][] tab;
     private int taille;
     private Perso p1;
     private Perso p2;
+<<<<<<< HEAD
+=======
+    private ArrayList<Thread>th = new ArrayList<>();
+    private ArrayList<Bombe> bombes = new ArrayList<>();
+>>>>>>> update-mur-cassable
 
     public Plateau(int taille) {
         this.taille = taille;
@@ -57,6 +68,11 @@
         }
     }
 
+    public void setBombe(Thread thread, Bombe bombe){
+        th.add(thread);
+        bombes.add(bombe);
+    }
+
     public void explosion(int portee, int x, int y) {
         tab[x][y].deflag();
         if(tab[x][y].getC() == Contenu.Perso){
@@ -71,6 +87,19 @@
                     System.out.println("je perd un point " + p1.getVie() + " en bas   ");
                     p1.perdVie();
                 }
+<<<<<<< HEAD
+=======
+                if(tab[x][y + j].isAmorce()) {
+                    for(int i = 0; i < bombes.size(); i++){
+                        if(bombes.get(i).getX() == x && bombes.get(i).getY() == y + j){
+                            th.get(i).interrupt();
+                            th.remove(i);
+                            bombes.remove(i);
+                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                        }
+                    }
+                }
+>>>>>>> update-mur-cassable
                 tab[x][y + j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
             } else { 
@@ -87,6 +116,19 @@
                     System.out.println("je perd un point "+p1.getVie() + " en haut");
                     p1.perdVie();
                 }
+<<<<<<< HEAD
+=======
+                if(tab[x][y - j].isAmorce()) {
+                    for(int i = 0; i < bombes.size(); i++){
+                        if(bombes.get(i).getX() == x && bombes.get(i).getY() == y - j){
+                            th.get(i).interrupt();
+                            th.remove(i);
+                            bombes.remove(i);
+                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                        }
+                    }
+                }
+>>>>>>> update-mur-cassable
                 tab[x][y - j].setExplo();
                 //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
             } else {
@@ -104,6 +146,19 @@
                     p1.perdVie();
                     System.out.println("je perd un point "+p1.getVie() + " a droite");
                 }
+<<<<<<< HEAD
+=======
+                if(tab[x + j][y].isAmorce()) {
+                    for(int i = 0; i < bombes.size(); i++){
+                        if(bombes.get(i).getX() == x + j && bombes.get(i).getY() == y){
+                            th.get(i).interrupt();
+                            th.remove(i);
+                            bombes.remove(i);
+                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                        }
+                    }
+                }
+>>>>>>> update-mur-cassable
                 tab[x + j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
@@ -121,6 +176,19 @@
                     System.out.println("je perd un point "+p1.getVie() + " a gauche");
                     p1.perdVie();
                 }
+<<<<<<< HEAD
+=======
+                if(tab[x - j][y].isAmorce()) {
+                    for(int i = 0; i < bombes.size(); i++){
+                        if(bombes.get(i).getX() == x - j && bombes.get(i).getY() == y){
+                            th.get(i).interrupt();
+                            th.remove(i);
+                            bombes.remove(i);
+                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                        }
+                    }
+                }
+>>>>>>> update-mur-cassable
                 tab[x - j][y].setExplo();
                 //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
             } else {
@@ -131,6 +199,7 @@
                 break;
             }
         }
+
     }
 
     public void finexplo(int portee, int x, int y) {
