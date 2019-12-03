@@ -1,4 +1,4 @@
-public class Case {
+ public class Case {
 
     private Contenu c;
     private boolean amorce;
@@ -19,6 +19,7 @@ public class Case {
     public void amorcage() {
         amorce = true;
     }
+
 
     public synchronized void deflag() {
         amorce = false;
@@ -56,4 +57,5 @@ public class Case {
     public boolean isExplo() {
         return explo;
     }
+
 }
