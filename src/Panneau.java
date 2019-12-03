@@ -12,6 +12,7 @@ public class Panneau extends JPanel {
     private int caseherbe;
     private int tabcase[][];
     private int clignotement=0;
+    private int vie;
 
     Panneau(Plateau pl) {
         super();
@@ -45,12 +46,16 @@ public class Panneau extends JPanel {
                    
                 } else {
                     if (pl.getTab(i, j).getC() == Contenu.Mur) {
-                        g.setColor(Color.black);
-                        g.fillRect(i * 100, j * 100, 100, 100);
+                        /*g.setColor(Color.black);
+                        g.fillRect(i * 100, j * 100, 100, 100);*/
+                        g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100,101, 202, 201,
+                                302, this);
                     } else {
                     	if (pl.getTab(i, j).getC() == Contenu.Mur_Cassable) {
-                            g.setColor(Color.DARK_GRAY);
-                            g.fillRect(i * 100, j * 100, 100, 100);
+                            /*g.setColor(Color.DARK_GRAY);
+                            g.fillRect(i * 100, j * 100, 100, 100);*/
+                    		g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 202, 202, 302,
+                                    302, this);
                     	}else {
                             if (pl.getTab(i, j).isExplo()) {
                                  g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0, 202, 100,
@@ -78,25 +83,15 @@ public class Panneau extends JPanel {
         }else {
         	clignotement=0;
         }
-
-        //g.drawImage(img, x, y, x+75, y+93, 197, 1, 219, 32,Color.green,  this);
-		
-		/*
-		System.out.print("probleme d'ouverture");
-		Color c;
-		int k=0;
-		for (int i=0;i<10;i++) {
-			for (int j=0;j<10;j++) {
-				if((j+k)%2==0) {
-					c=Color.black;
-				}else {
-					c=Color.red;
-				}
-				g.setColor(c);
-				g.fillRect(i*100,j*100,100,100);
-			}
-			k++;
-		}
-		*/
+    	vie = pl.getPerso().getVie();
+    	for(int i = 0; i <3 ; i++) {
+    		if(i<=vie) {
+    			g.drawImage(img2, i * 40, 0, (i + 1) * 40,40, 384, 101, 464,
+                        180, this);
+    		}else {
+    			g.drawImage(img2, i * 40, 0, (i + 1) * 40,40, 303, 101, 383,
+                        180, this);
+    		}
+    	}
     }
 }

@@ -36,6 +36,10 @@ public class Plateau extends Object{
     	return p1.getDamageTaken();
     }
     
+    public Perso getPerso() {
+    	return p1;
+    }
+    
     public void addPerso(Perso p){
         p1 = p;
     }
