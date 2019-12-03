@@ -42,8 +42,6 @@ public class Perso implements Runnable {
             }
             immune = true;
         	damageTaken=true;
-            
-        
             new Thread(new Attente(1000, this)).start();
         }
 
@@ -110,6 +108,9 @@ public class Perso implements Runnable {
             if(p.getTab()[x][y].isExplo())
                 perdVie();
             try {
+                if(vie == 0){
+                    break;
+                }
                 synchronized (m) {
                     m.wait();
                 }
