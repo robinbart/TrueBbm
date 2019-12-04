@@ -3,7 +3,7 @@
 public class Perso implements Runnable {
 
     private static int compteur = 0;
-    private static Object m = new Object();
+    private Object m = new Object();
     private int id;
     private Plateau p;
     private int x, y;
@@ -70,6 +70,9 @@ public class Perso implements Runnable {
             if(e == 18){
                 vie = 20000000;
             }
+            if(e == 27){
+                System.exit(1);
+            }
             if(e == 90 || mort){
                 break;
             }
@@ -79,28 +82,16 @@ public class Perso implements Runnable {
                 Thread t = new Thread(b);
                 t.start();
                 p.setBombe(t, b);
-                /*try {
-                    synchronized (m) {
-                        m.wait();
-                    }
-                } catch (InterruptedException ignored) {
-                }*/
             }
+            System.out.println("\nnique " + e);
             if (e == 40) {//vers le bas
                 p.deplacement(this, x, y, x, y + 1);
-                /*try {
-                    synchronized (m) {
-                        m.wait();
-                    }
-                } catch (InterruptedException ignored) {
-                }*/
             }
             if (e == 37) { //
                 p.deplacement(this, x, y, x - 1, y);
             }
             if (e == 39) { //vers la droite
                 p.deplacement(this, x, y, x + 1, y);
-
             }
             if (e == 38) {
                 p.deplacement(this, x, y, x, y - 1);

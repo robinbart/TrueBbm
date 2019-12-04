@@ -33,9 +33,11 @@ public class Lancement {
                 fen.setP(p, persos);
             }
             p.addPerso(persos);
-            //Perso p2 = new Perso(p, 9, 9);
-            Thread t1 = new Thread(p1);
-            t1.start();
+            ArrayList<Thread> th = new ArrayList<Thread>();
+            for(int i = 0; i < NB_PERSO; i++) {
+                th.add(new Thread(persos.get(i)));
+                th.get(i).start();
+            }
             //Thread t2 = new Thread(p2);
             //t2.start();
 
@@ -45,7 +47,7 @@ public class Lancement {
                 t3.start();
                 created = false;
             }
-            t1.join();
+            th.get(0).join();
         }
     }
 }

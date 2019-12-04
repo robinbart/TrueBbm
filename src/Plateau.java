@@ -110,7 +110,7 @@ public class Plateau extends Object{
                     }
                 }
                 tab[x][y + j].setExplo();
-                //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosé");
+                //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explosï¿½");
             } else { 
             	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
             	if (y+j < taille && (tab[x][y + j].getC()==Contenu.Mur_Cassable)) {
@@ -140,7 +140,7 @@ public class Plateau extends Object{
                     }
                 }
                 tab[x][y - j].setExplo();
-                //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosé");
+                //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explosï¿½");
             } else {
             	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
             	if (y - j >= 0 && (tab[x][y - j].getC()==Contenu.Mur_Cassable)) {
@@ -171,7 +171,7 @@ public class Plateau extends Object{
                     }
                 }
                 tab[x + j][y].setExplo();
-                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
+                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosï¿½");
             } else {
             	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x + j, 0)+" et y : "+y);
             	if (x+j < taille && (tab[x + j][y].getC()==Contenu.Mur_Cassable)) {
@@ -201,7 +201,7 @@ public class Plateau extends Object{
                     }
                 }
                 tab[x - j][y].setExplo();
-                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosé");
+                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explosï¿½");
             } else {
             	//System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
             	if (x - j >= 0 && (tab[x - j][y].getC()==Contenu.Mur_Cassable)) {
