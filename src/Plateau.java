@@ -27,16 +27,28 @@ public class Plateau extends Object{
             }
         }
     }
-
-    public void damageTaken(Perso p) {
+    
+   
+    
+    public int retournnumberperso(int x , int y) {
+    	for (int j = 0; j < p.size(); j++) {
+    		if(p.get(j).getX()==x && p.get(j).getY()==y) {
+    			return j;
+    		}
+    	}
+    	return 0;
     }
     
-    public boolean getDamageTaken() {
-    	return p.get(0).getImmune();
+    public boolean isPersoHurt(int i) {
+    	return p.get(i).getImmune();
     }
     
-    public Perso getPerso() {
-    	return p.get(0);
+    public Perso getPerso(int i) {
+    	return p.get(i);
+    }
+    
+    public ArrayList<Perso> getFullPerso() {
+    	return p;
     }
     
     public void addPerso(ArrayList<Perso> p){

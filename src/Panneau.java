@@ -11,7 +11,7 @@ public class Panneau extends JPanel {
     private Plateau pl;
     private int caseherbe;
     private int tabcase[][];
-    private int clignotement=0;
+    private int clignotement[];
     private int vie;
 
     Panneau(Plateau pl) {
@@ -24,6 +24,10 @@ public class Panneau extends JPanel {
         	}
         }
         this.pl = pl;
+        clignotement = new int[pl.getFullPerso().size()];
+        for(int i = 0;i<pl.getFullPerso().size();i++) {
+        	clignotement[i]=0;
+        }
         try {
             this.img1 = ImageIO.read(new File("testsprite1.png"));
             this.img2 = ImageIO.read(new File("testsprite2.png"));
@@ -64,7 +68,7 @@ public class Panneau extends JPanel {
                                 g.drawImage(img2, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 0+(tabcase[i][j]*101), 0, 100+(tabcase[i][j]*101),
                                         100, Color.red, this);
                             }
-                            if(clignotement%2==0) {
+                            if(clignotement[pl.retournnumberperso(i,j)]%2==0) {
                             	g.drawImage(img1, i * 100, j * 100, (i + 1) * 100, (j + 1) * 100, 196, 0, 222,
                                     34, this);
                             }
@@ -80,20 +84,24 @@ public class Panneau extends JPanel {
                 
             }
         }
-        if(pl.getDamageTaken()) {
-            clignotement++;
-        }else {
-        	clignotement=0;
+        for(int i = 0; i<pl.getFullPerso().size() ; i++) {
+        	if(pl.isPersoHurt(i)) {
+                clignotement[i]++;
+            }else {
+            	clignotement[i]=0;
+            }
         }
-    	vie = pl.getPerso().getVie();
-    	for(int i = 0; i <3 ; i++) {
-    		if(i<vie) {
-    			g.drawImage(img2, i * 40, 0, (i + 1) * 40,40, 384, 101, 464,
-                        180, this);
-    		}else {
-    			g.drawImage(img2, i * 40, 0, (i + 1) * 40,40, 303, 101, 383,
-                        180, this);
-    		}
-    	}
+        for(int j = 0;j<pl.getFullPerso().size();j++) {
+	    	vie = pl.getPerso(j).getVie();
+	    	for(int i = 0; i <3 ; i++) {
+	    		if(i<vie) {
+	    			g.drawImage(img2, i * 40+j*200, 0, ((i + 1) * 40)+j*200,40, 384, 101, 464,
+	                        180, this);
+	    		}else {
+	    			g.drawImage(img2, i * 40+j*200, 0, ((i + 1) * 40)+j*200,40, 303, 101, 383,
+	                        180, this);
+	    		}
+	    	}
+        }
     }
 }

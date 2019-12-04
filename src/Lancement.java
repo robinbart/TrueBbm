@@ -24,15 +24,16 @@ public class Lancement {
                         break;
                 }
             }
-            if(!created){
-                fen.setP(p, persos);
-            }
             p.addPerso(persos);
             ArrayList<Thread> th = new ArrayList<>();
             for(int i = 0; i < NB_PERSO; i++) {
                 th.add(new Thread(persos.get(i)));
                 th.get(i).start();
             }
+            if(!created){
+                fen.setP(p, persos);
+            }
+           
 
             if(created) {
                 fen = new Oui(p, persos);
@@ -40,6 +41,7 @@ public class Lancement {
                 t3.start();
                 created = false;
             }
+            
             th.get(0).join();
         }
     }
