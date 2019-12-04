@@ -79,139 +79,139 @@ public class Plateau extends Object{
 
     public void explosion(int portee, int x, int y) {
         tab[x][y].deflag();
-        if(tab[x][y].getC() == Contenu.Perso){
-            for (int i = 0; i < p.size(); i++){
-                if(p.get(i).getX() == x && p.get(i).getY() == y){
+        if (tab[x][y].getC() == Contenu.Perso) {
+            for (int i = 0; i < p.size(); i++) {
+                if (p.get(i).getX() == x && p.get(i).getY() == y) {
                     p.get(i).perdVie();
                 }
             }
         }
-        System.out.println("x : "+x+" et y : "+y);
+        System.out.println("x : " + x + " et y : " + y);
         System.out.println("Perso 1 a " + p.get(0).getVie());
         for (int j = 1; j < portee; j++) { //vers le bas
-            if (y+j < taille && (tab[x][y + j].getC() == Contenu.Vide
-                    || tab[x][y + j].getC() == Contenu.Perso )) {
-                if(tab[x][y + j].getC() == Contenu.Perso) {
-                    for (int i = 0; i < p.size(); i++){
-                        if(p.get(i).getX() == x && p.get(i).getY() == y){
+            if (y + j < taille && (tab[x][y + j].getC() == Contenu.Vide
+                    || tab[x][y + j].getC() == Contenu.Perso)) {
+                if (tab[x][y + j].getC() == Contenu.Perso) {
+                    for (int i = 0; i < p.size(); i++) {
+                        if (p.get(i).getX() == x && p.get(i).getY() == y + j) {
                             p.get(i).perdVie();
-                            System.out.println("je perd un point " + p.get(i).getVie() + " en bas   ");
                         }
                     }
                 }
-                if(tab[x][y + j].isAmorce()) {
-                    for(int i = 0; i < bombes.size(); i++){
-                        if(bombes.get(i).getX() == x && bombes.get(i).getY() == y + j){
-                            th.get(i).interrupt();
-                            th.remove(i);
-                            bombes.remove(i);
-                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                    if (tab[x][y + j].isAmorce()) {
+                        for (int i = 0; i < bombes.size(); i++) {
+                            if (bombes.get(i).getX() == x && bombes.get(i).getY() == y + j) {
+                                th.get(i).interrupt();
+                                th.remove(i);
+                                bombes.remove(i);
+                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                            }
                         }
                     }
+                    tab[x][y + j].setExplo();
+                    //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explos�");
+                } else {
+                    //System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+                    if (y + j < taille && (tab[x][y + j].getC() == Contenu.Mur_Cassable)) {
+                        tab[x][y + j].casse();
+                    }
+                    break;
                 }
-                tab[x][y + j].setExplo();
-                //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explos�");
-            } else { 
-            	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
-            	if (y+j < taille && (tab[x][y + j].getC()==Contenu.Mur_Cassable)) {
-            		tab[x][y + j].casse();
-            	}
-                break;
             }
-        }
-        for (int j = 1; j < portee; j++) { //vers le haut
-            if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
-                if(tab[x][y - j].getC() == Contenu.Perso){
-                    for (int i = 0; i < p.size(); i++){
-                        if(p.get(i).getX() == x && p.get(i).getY() == y){
-                            p.get(i).perdVie();
-                            System.out.println("je perd un point "+p.get(i).getVie() + " en haut");
+            for (int j = 1; j < portee; j++) { //vers le haut
+                if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
+                    if (tab[x][y - j].getC() == Contenu.Perso) {
+                        for (int i = 0; i < p.size(); i++) {
+                            if (p.get(i).getX() == x && p.get(i).getY() == y - j) {
+                                p.get(i).perdVie();
+                                System.out.println("je perd un point " + p.get(i).getVie() + " en haut");
+                            }
                         }
                     }
-                }
-                if(tab[x][y - j].isAmorce()) {
-                    for(int i = 0; i < bombes.size(); i++){
-                        if(bombes.get(i).getX() == x && bombes.get(i).getY() == y - j){
-                            th.get(i).interrupt();
-                            th.remove(i);
-                            bombes.remove(i);
-                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                    if (tab[x][y - j].isAmorce()) {
+                        for (int i = 0; i < bombes.size(); i++) {
+                            if (bombes.get(i).getX() == x && bombes.get(i).getY() == y - j) {
+                                th.get(i).interrupt();
+                                th.remove(i);
+                                bombes.remove(i);
+                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                            }
                         }
                     }
+                    tab[x][y - j].setExplo();
+                    //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explos�");
+                } else {
+                    //System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+                    if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Mur_Cassable)) {
+                        tab[x][y - j].casse();
+                    }
+                    break;
                 }
-                tab[x][y - j].setExplo();
-                //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explos�");
-            } else {
-            	//System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
-            	if (y - j >= 0 && (tab[x][y - j].getC()==Contenu.Mur_Cassable)) {
-            		tab[x][y - j].casse();
-            	}
-            	break;
             }
-        }
-        for (int j = 1; j < portee; j++) { //vers la doite
-            if (x+j < taille && (tab[x + j][y].getC() == Contenu.Vide
-                    || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
-                if(tab[x + j][y].getC() == Contenu.Perso){
-                    for (int i = 0; i < p.size(); i++){
-                        if(p.get(i).getX() == x && p.get(i).getY() == y){
-                            p.get(i).perdVie();
-                            System.out.println("je perd un point "+p.get(i).getVie() + " a droite");
+            for (int j = 1; j < portee; j++) { //vers la doite
+                if (x + j < taille && (tab[x + j][y].getC() == Contenu.Vide
+                        || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
+                    if (tab[x + j][y].getC() == Contenu.Perso) {
+                        for (int i = 0; i < p.size(); i++) {
+                            if (p.get(i).getX() == x + j && p.get(i).getY() == y) {
+                                p.get(i).perdVie();
+                                System.out.println("je perd un point " + p.get(i).getVie() + " a droite");
+                            }
                         }
                     }
-                }
-                if(tab[x + j][y].isAmorce()) {
-                    for(int i = 0; i < bombes.size(); i++){
-                        if(bombes.get(i).getX() == x + j && bombes.get(i).getY() == y){
-                            th.get(i).interrupt();
-                            th.remove(i);
-                            bombes.remove(i);
-                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                    if (tab[x + j][y].isAmorce()) {
+                        for (int i = 0; i < bombes.size(); i++) {
+                            if (bombes.get(i).getX() == x + j && bombes.get(i).getY() == y) {
+                                th.get(i).interrupt();
+                                th.remove(i);
+                                bombes.remove(i);
+                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                            }
                         }
                     }
+                    tab[x + j][y].setExplo();
+                    //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
+                } else {
+                    System.out.println(" l'explo a rencontre un mur en x : " + Math.max(x + j, 0) + " et y : " + y);
+                    if (x + j < taille && (tab[x + j][y].getC() == Contenu.Mur_Cassable)) {
+                        tab[x + j][y].casse();
+                    }
+                    break;
                 }
-                tab[x + j][y].setExplo();
-                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
-            } else {
-            	System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x + j, 0)+" et y : "+y);
-            	if (x+j < taille && (tab[x + j][y].getC()==Contenu.Mur_Cassable)) {
-            		tab[x + j][y].casse();
-            	}
-                break;
             }
-        }
-        for (int j = 1; j < portee; j++) { //vers la gauche
-            if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide
-                    || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
-                if(tab[x - j][y].getC() == Contenu.Perso){
-                    for (int i = 0; i < p.size(); i++){
-                        if(p.get(i).getX() == x && p.get(i).getY() == y){
-                            p.get(i).perdVie();
-                            System.out.println("je perd un point "+p.get(i).getVie() + " a gauche");
+            for (int j = 1; j < portee; j++) { //vers la gauche
+                if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide
+                        || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
+                    if (tab[x - j][y].getC() == Contenu.Perso) {
+                        for (int i = 0; i < p.size(); i++) {
+                            if (p.get(i).getX() == x - j && p.get(i).getY() == y) {
+                                p.get(i).perdVie();
+                                System.out.println("je perd un point " + p.get(i).getVie() + " a gauche");
+                            }
                         }
                     }
-                }   if(tab[x - j][y].isAmorce()) {
-                    for(int i = 0; i < bombes.size(); i++){
-                        if(bombes.get(i).getX() == x - j && bombes.get(i).getY() == y){
-                            th.get(i).interrupt();
-                            th.remove(i);
-                            bombes.remove(i);
-                            System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                    if (tab[x - j][y].isAmorce()) {
+                        for (int i = 0; i < bombes.size(); i++) {
+                            if (bombes.get(i).getX() == x - j && bombes.get(i).getY() == y) {
+                                th.get(i).interrupt();
+                                th.remove(i);
+                                bombes.remove(i);
+                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                            }
                         }
                     }
+                    tab[x - j][y].setExplo();
+                    //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
+                } else {
+                    //System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
+                    if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Mur_Cassable)) {
+                        tab[x - j][y].casse();
+                    }
+                    break;
                 }
-                tab[x - j][y].setExplo();
-                //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
-            } else {
-            	//System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
-            	if (x - j >= 0 && (tab[x - j][y].getC()==Contenu.Mur_Cassable)) {
-            		tab[x - j][y].casse();
-            	}
-                break;
             }
-        }
 
-    }
+        }
 
     public void finexplo(int portee, int x, int y) {
         for (int j = 1; j < portee; j++) {
