@@ -3,17 +3,18 @@
 public class Perso implements Runnable {
 
     private static int compteur = 0;
-    private Object m = new Object();
+    private final Object m = new Object();
     private int id;
     private Plateau p;
     private int x, y;
     private boolean mort = false;
     private boolean immune = false;
-    private int portee = 3; //TODO: dans constructeur
+    private int portee = 3;         //TODO: dans constructeur
     private int e = 0;
-    private int vie = 3; //TODO: dans constructeur
-    private boolean damageTaken=false;
-    
+    private int vie = 3;            //TODO: dans constructeur
+    private int maxBombe = 2;       //TODO: dans constructeur
+    private int nbBombe = 0;
+
     
     public Perso(Plateau p, int x, int y) {
         synchronized (m) {
@@ -41,7 +42,6 @@ public class Perso implements Runnable {
                 }
             }
             immune = true;
-        	damageTaken=true;
             new Thread(new Attente(1000, this)).start();
         }
 
@@ -49,6 +49,10 @@ public class Perso implements Runnable {
 
     public int getVie(){
         return vie;
+    }
+
+    public void removeBombe(){
+        nbBombe--;
     }
 
     public void changerE(int KeyCode) {
@@ -77,11 +81,14 @@ public class Perso implements Runnable {
                 break;
             }
             if (e == 17) {
-                System.out.println("J'amorce");
-                Bombe b = new Bombe(portee, p, x, y);
-                Thread t = new Thread(b);
-                t.start();
-                p.setBombe(t, b);
+                if(nbBombe < maxBombe) {
+                    System.out.println("J'amorce");
+                    Bombe b = new Bombe(portee, p, x, y, this);
+                    Thread t = new Thread(b);
+                    t.start();
+                    p.setBombe(t, b);
+                    nbBombe++;
+                }
             }
             System.out.println("\nnique " + e);
             if (e == 40) {//vers le bas
@@ -115,15 +122,15 @@ public class Perso implements Runnable {
         }
     }
 
-	public void setDamageTaken(boolean b) {
+	public void setImmune(boolean b) {
 		// TODO Auto-generated method stub
-		damageTaken=b;
+		immune =b;
 		
 	}
 
-	public boolean getDamageTaken() {
+	public boolean getImmune() {
 		// TODO Auto-generated method stub
-		return damageTaken;
+		return immune;
 	}
 
     public int getX() {

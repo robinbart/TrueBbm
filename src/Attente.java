@@ -12,7 +12,7 @@ public class Attente implements Runnable{
         try {
             sleep(temps);
             p.setImmune();
-            p.setDamageTaken(false);
+            p.setImmune(false);
         }
         catch (InterruptedException e){
             System.err.println("Erreur in attente");

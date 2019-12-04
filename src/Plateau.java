@@ -32,7 +32,7 @@ public class Plateau extends Object{
     }
     
     public boolean getDamageTaken() {
-    	return p.get(0).getDamageTaken();
+    	return p.get(0).getImmune();
     }
     
     public Perso getPerso() {
