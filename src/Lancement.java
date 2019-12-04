@@ -2,16 +2,11 @@ import java.util.ArrayList;
 
 public class Lancement {
     public static void main(String[] args) throws InterruptedException {
-		/*Perso p1 = new Perso();
-		Thread t = new Thread(p1);
-		System.out.println("oui");
-		t.start();*/
 		boolean created = true;
         Oui fen = null;
-        int NB_PERSO = 3;
+        int NB_PERSO = 2;
         while (true){
             Plateau p = new Plateau(10);
-            Perso p1 = new Perso(p, 0, 0);
             ArrayList<Perso> persos = new ArrayList<>();
             for (int i = 0; i < NB_PERSO; i++){
                 switch (i){
@@ -33,13 +28,11 @@ public class Lancement {
                 fen.setP(p, persos);
             }
             p.addPerso(persos);
-            ArrayList<Thread> th = new ArrayList<Thread>();
+            ArrayList<Thread> th = new ArrayList<>();
             for(int i = 0; i < NB_PERSO; i++) {
                 th.add(new Thread(persos.get(i)));
                 th.get(i).start();
             }
-            //Thread t2 = new Thread(p2);
-            //t2.start();
 
             if(created) {
                 fen = new Oui(p, persos);

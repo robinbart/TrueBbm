@@ -21,20 +21,26 @@ public class Controler implements KeyListener {
             p.get(0).changerE(kc);
         }
         //Perso numero 2
-        if(kc == 68){
-            p.get(1).changerE(39);
-        }
-        if(kc == 83){
-            p.get(1).changerE(40);
-        }
-        if(kc == 81){
-            p.get(1).changerE(37);
-        }
-        if(kc == 90){
-            p.get(1).changerE(38);
-        }
-        if(kc == 65){
-            p.get(1).changerE(17);
+        else {
+            if (kc == 68) {
+                p.get(1).changerE(39);
+            } else {
+                if (kc == 83) {
+                    p.get(1).changerE(40);
+                } else {
+                    if (kc == 81) {
+                        p.get(1).changerE(37);
+                    } else {
+                        if (kc == 90) {
+                            p.get(1).changerE(38);
+                        } else {
+                            if (kc == 65) {
+                                p.get(1).changerE(17);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

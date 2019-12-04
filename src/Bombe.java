@@ -4,7 +4,7 @@
     private Plateau p;
     private int x, y; //coordonnees de la bombe
 
-    public Bombe(int portee, Plateau p, int x, int y) {
+    Bombe(int portee, Plateau p, int x, int y) {
         this.p = p;
         this.portee = portee;
         this.x = x;
@@ -29,11 +29,11 @@
         }
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 
-    public int getY() {
+    int getY() {
         return y;
     }
 }
