@@ -13,6 +13,7 @@ public class Panneau extends JPanel {
     private int tabcase[][];
     private int clignotement[];
     private int vie;
+    private int fullPerso;
 
     Panneau(Plateau pl) {
         super();
@@ -24,8 +25,9 @@ public class Panneau extends JPanel {
         	}
         }
         this.pl = pl;
-        clignotement = new int[pl.getFullPerso().size()];
-        for(int i = 0;i<pl.getFullPerso().size();i++) {
+        fullPerso = pl.getFullPerso().size();
+        clignotement = new int[fullPerso];
+        for(int i = 0;i<fullPerso;i++) {
         	clignotement[i]=0;
         }
         try {
@@ -34,6 +36,10 @@ public class Panneau extends JPanel {
         } catch (IOException e) {
             System.out.print(e.getMessage());
         }
+    }
+    
+    public void setPlateau(Plateau pl) {
+    	this.pl = pl;
     }
 
     public void paintComponent(Graphics g) {
@@ -84,14 +90,14 @@ public class Panneau extends JPanel {
                 
             }
         }
-        for(int i = 0; i<pl.getFullPerso().size() ; i++) {
+        for(int i = 0; i<fullPerso ; i++) {
         	if(pl.isPersoHurt(i)) {
                 clignotement[i]++;
             }else {
             	clignotement[i]=0;
             }
         }
-        for(int j = 0;j<pl.getFullPerso().size();j++) {
+        for(int j = 0;j<fullPerso;j++) {
 	    	vie = pl.getPerso(j).getVie();
 	    	for(int i = 0; i <3 ; i++) {
 	    		if(i<vie) {

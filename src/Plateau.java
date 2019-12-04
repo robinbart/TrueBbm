@@ -28,6 +28,9 @@ public class Plateau extends Object{
         }
     }
     
+    public void setArrayList(ArrayList<Perso> a) {
+    	this.p = a;
+    }
    
     
     public int retournnumberperso(int x , int y) {
