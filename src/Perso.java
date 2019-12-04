@@ -73,10 +73,10 @@ public class Perso implements Runnable {
             if(e == 27){
                 System.exit(1);
             }
-            if(e == 90 || mort){
+            if(e == 32 || mort){
                 break;
             }
-            if (e == 65) {
+            if (e == 17) {
                 System.out.println("J'amorce");
                 Bombe b = new Bombe(portee, p, x, y);
                 Thread t = new Thread(b);

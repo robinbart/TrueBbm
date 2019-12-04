@@ -1,4 +1,3 @@
- import static java.lang.Thread.sleep;
 import static java.lang.Thread.sleep;
 
 public class Attente implements Runnable{

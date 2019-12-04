@@ -16,11 +16,25 @@ public class Controler implements KeyListener {
     public void keyPressed(KeyEvent e){
         System.out.println("" + e.getKeyCode());
         int kc = e.getKeyCode();
-        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 65 || kc == 18 ||kc == 27 || kc == 90) {
+        //Perso numero 1
+        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 17 || kc == 18 ||kc == 27 || kc == 32) {
             p.get(0).changerE(kc);
         }
-        if(kc == 100 || kc == 101 || kc == 102 || kc == 103 || kc == 104){
-            p.get(1).changerE(kc - 63);
+        //Perso numero 2
+        if(kc == 68){
+            p.get(1).changerE(39);
+        }
+        if(kc == 83){
+            p.get(1).changerE(40);
+        }
+        if(kc == 81){
+            p.get(1).changerE(37);
+        }
+        if(kc == 90){
+            p.get(1).changerE(38);
+        }
+        if(kc == 65){
+            p.get(1).changerE(17);
         }
     }
 
