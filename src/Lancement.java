@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class Lancement {
-	
-	
     public static void main(String[] args) throws InterruptedException {
 		boolean created = true;
         Oui fen = null;
@@ -18,10 +16,10 @@ public class Lancement {
             	for (int i = 0; i < NB_PERSO; i++){
                     switch (i){
                         case 0:
-                            persos.add(new Perso(pl, 0, 0));
+                            persos.add(new Perso(pl, 9, 9));
                             break;
                         case 1:
-                            persos.add(new Perso(pl, 9, 9));
+                            persos.add(new Perso(pl, 0, 0));
                             break;
                         case 2:
                             persos.add(new Perso(pl, 0, 9));
@@ -43,10 +41,10 @@ public class Lancement {
                 for (int i = 0; i < NB_PERSO; i++){
                     switch (i){
                         case 0:
-                            persos.add(new Perso(pl, 0, 0));
+                            persos.add(new Perso(pl, 9, 9));
                             break;
                         case 1:
-                            persos.add(new Perso(pl, 9, 9));
+                            persos.add(new Perso(pl, 0, 0));
                             break;
                         case 2:
                             persos.add(new Perso(pl, 0, 9));

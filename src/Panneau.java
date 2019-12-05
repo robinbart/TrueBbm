@@ -97,7 +97,7 @@ public class Panneau extends JPanel {
             	clignotement[i]=0;
             }
         }
-        for(int j = 0;j<fullPerso;j++) {
+        for(int j = fullPerso - 1; j >= 0; j--) {
 	    	vie = pl.getPerso(j).getVie();
 	    	for(int i = 0; i <3 ; i++) {
 	    		if(i<vie) {

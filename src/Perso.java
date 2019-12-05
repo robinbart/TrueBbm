@@ -71,7 +71,6 @@ public class Perso implements Runnable {
 
     public void run(){
         while (true) {
-        	System.out.println("tugduy	vud	");
             if(e == 18){
                 vie = 20000000;
             }

@@ -17,11 +17,15 @@ public class Controler implements KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
+    public void restart(){
+        ap.get(0).changerE(32);
+    }
+
     public void keyPressed(KeyEvent e){
         System.out.println("zhhrhhert " + e.getKeyCode());
         int kc = e.getKeyCode();
         //Perso numero 1
-        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 17 || kc == 18 || kc == 32) {
+        if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 17 || kc == 18) {
             ap.get(0).changerE(kc);
         }else { //Perso numero 2
             if (kc == 68) {

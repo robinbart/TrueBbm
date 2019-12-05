@@ -15,7 +15,6 @@ import java.awt.event.WindowEvent;
     private Controler c;
     private CardLayout cl;
     private JPanel jp;
-    private JPanel jp2;
     private Menu m;
     
     
@@ -34,10 +33,13 @@ import java.awt.event.WindowEvent;
         this.setSize(width, height);
         
         this.setBackground(Color.black);
-        this.setLocation(0, 0);
+        this.setLocation(150, 0);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(new Dimension(1015, 1037));
         this.setVisible(true);
         this.addKeyListener(c);
+        this.setResizable(false);
+
         
         this.cl = new CardLayout();
         this.jp = new JPanel(cl);
@@ -62,6 +64,10 @@ import java.awt.event.WindowEvent;
     	this.setFocusable(true);
     	cl.show(jp,"jeu");
 	}
+
+	public void restartJeu(){
+        c.restart();
+    }
 	
 	public void afficherMenu() { 
     	cl.show(jp,"menu");
