@@ -19,5 +19,8 @@ public class ActionButton extends AbstractAction {
 			if(text == "restart"){
 				fenetre.restartJeu();
 			}
+			if(text == "exit"){
+				System.exit(1);
+			}
 		}
 	}

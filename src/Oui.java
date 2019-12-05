@@ -27,10 +27,10 @@ import java.awt.event.WindowEvent;
         m = new Menu(this);
         
         this.setTitle("BomBerMan");
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        /*Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int)dimension.getHeight()-40;
         int width = (int)dimension.getWidth();
-        this.setSize(width, height);
+        this.setSize(width, height);*/
         
         this.setBackground(Color.black);
         this.setLocation(150, 0);
