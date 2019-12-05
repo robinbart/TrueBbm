@@ -15,6 +15,7 @@ import java.awt.event.WindowEvent;
     private Controler c;
     private CardLayout cl;
     private JPanel jp;
+    private JPanel jp2;
     private Menu m;
     
     
@@ -38,11 +39,12 @@ import java.awt.event.WindowEvent;
         this.setVisible(true);
         this.addKeyListener(c);
         
-        jp = new JPanel(cl = new CardLayout());
+        this.cl = new CardLayout();
+        this.jp = new JPanel(cl);
         
         this.setContentPane(jp);
-        jp.add(m, "menu");
         jp.add(p,"jeu");
+        jp.add(m, "menu");
         cl.show(jp,"menu");
     }
 
@@ -57,21 +59,19 @@ import java.awt.event.WindowEvent;
     }
     
     public void afficherJeu() {
-		/*c = new Controler(ap,this);
-        this.addKeyListener(c);*/
+    	this.setFocusable(true);
     	cl.show(jp,"jeu");
-    	//System.out.println("shit");
 	}
 	
-	public void afficherMenu() {
-    	cl.show(jp,"Menu");
+	public void afficherMenu() { 
+    	cl.show(jp,"menu");
 	}
 
     public void run() {
         try {
             while (true) {
             	//System.out.println("affichage");
-                Thread.sleep(50);
+                Thread.sleep(20);
                 p.repaint();
             }
         }catch (InterruptedException e){
