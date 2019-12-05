@@ -1,4 +1,9 @@
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Plateau extends Object{
@@ -12,7 +17,69 @@ public class Plateau extends Object{
     public Plateau(int taille) {
         this.taille = taille;
         tab = new Case[taille][taille];
-        for (int i = 0; i < taille; i++) {
+        /*BufferedReader Buff=null;
+        try{
+        	Buff = new BufferedReader(new FileReader("zboob.txt"));
+	    }
+	    catch(FileNotFoundException exc) {
+	    	System.out.println("Erreur d'ouverture");
+	    }
+        String ligne;
+        try {
+			while ((ligne = Buff.readLine()) != null) {
+				char c;
+				while ((c = inputStream.read()) != -1) {
+	                outputStream.write(c);
+	            }
+			    System.out.println(ligne);
+			}
+		} catch (IOException e) {
+			System.out.println("raf est une tantouze");
+		}
+        try {
+			Buff.close();
+		} catch (IOException e) {
+
+			System.out.println("Aurelien aussi d'ailleurs");
+		}*/
+        FileReader inputStream = null;
+        int i=0 , j=0;
+        try {
+            inputStream = new FileReader("zboob.txt");
+
+            int c;
+            while ((c = inputStream.read()) != -1) {
+	            if(c==48) {
+	            	tab[i][j] = new Case(Contenu.Vide);
+	            }else{
+	            	if(c==50) {
+	            		tab[i][j] = new Case(Contenu.Mur_Cassable);
+	            	}else{
+	            		if(c==49) {
+	            			tab[i][j] = new Case(Contenu.Mur);
+	            		}else{
+	            			if(c==32) {
+	            				j++;
+	            			}else{
+	            				if(c==13) {
+	            					i++;
+	            					j=0;
+	            				}
+			            	}
+		            	}
+		            }
+	            }
+            }
+        }catch(IOException e) {}
+        finally {
+            if (inputStream != null) {
+                try {
+					inputStream.close();
+				} catch (IOException e) {}
+            }
+        }
+        
+        /*for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
             	int rand = (int)(Math.random() * 10);
                 if (rand > 2) {
@@ -25,7 +92,7 @@ public class Plateau extends Object{
                 	}
                 }
             }
-        }
+        }*/
     }
     
     public void setArrayList(ArrayList<Perso> a) {
