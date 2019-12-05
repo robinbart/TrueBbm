@@ -22,7 +22,7 @@ import java.awt.event.WindowEvent;
         this.ap = ap;
         this.pl = pl;
         
-        c = new Controler(ap);
+        c = new Controler(ap,this);
         p = new Panneau(pl);
         m = new Menu(this);
         
@@ -30,8 +30,9 @@ import java.awt.event.WindowEvent;
         Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int)dimension.getHeight()-40;
         int width = (int)dimension.getWidth();
-        this.setBackground(Color.black);
         this.setSize(width, height);
+        
+        this.setBackground(Color.black);
         this.setLocation(0, 0);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -50,27 +51,26 @@ import java.awt.event.WindowEvent;
     	this.pl=pl;
         pl.setArrayList(ap);
         this.p.setPlateau(pl);
-        c = new Controler(ap);
+        c = new Controler(ap,this);
         this.addKeyListener(c);
     	cl.show(jp,"jeu");
-        /*this.setTitle("BomBerMan");
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int height = (int)dimension.getHeight()-40;
-        int width = (int)dimension.getWidth();
-        this.setSize(width, height);
-        this.setBackground(Color.black);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.setVisible(true);
-        this.addKeyListener(c);*/
-        //this.setContentPane(jp);
-        //cl.show(jp,"menu");
-        //cl.show(jp,"jeu");
     }
+    
+    public void afficherJeu() {
+		/*c = new Controler(ap,this);
+        this.addKeyListener(c);*/
+    	cl.show(jp,"jeu");
+    	//System.out.println("shit");
+	}
+	
+	public void afficherMenu() {
+    	cl.show(jp,"Menu");
+	}
 
     public void run() {
         try {
             while (true) {
+            	//System.out.println("affichage");
                 Thread.sleep(50);
                 p.repaint();
             }
@@ -82,8 +82,5 @@ import java.awt.event.WindowEvent;
         }
     }
 
-	public void afficherJeu() {
-    	cl.show(jp,"jeu");
-	}
+	
 }
-

@@ -71,11 +71,12 @@ public class Perso implements Runnable {
 
     public void run(){
         while (true) {
+        	System.out.println("tugduy	vud	");
             if(e == 18){
                 vie = 20000000;
             }
             if(e == 27){
-                System.exit(1);
+                //System.exit(1);
             }
             if(e == 32 || mort){
                 break;
