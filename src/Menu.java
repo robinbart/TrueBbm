@@ -16,6 +16,7 @@ public class Menu extends JPanel{
 		play = new JButton(new ActionButton(fen,"play"));
 		restart = new JButton(new ActionButton(fen, "restart"));
 		exit = new JButton(new ActionButton(fen, "exit"));
+		play.setBackground(Color.orange);
 		this.add(play);
 		this.add(restart);
 		this.add(exit);
