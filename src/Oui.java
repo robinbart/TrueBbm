@@ -17,6 +17,8 @@ import java.awt.event.WindowEvent;
     private JPanel jp;
     private Menu m;
     private MenuPrincipal mp;
+    private PanneauEditeur edit;
+    private ControlerEditeur ce;
     
     
     public Oui(Plateau pl, ArrayList<Perso> ap) {
@@ -27,7 +29,9 @@ import java.awt.event.WindowEvent;
         p = new Panneau(pl);
         m = new Menu(this);
         mp = new MenuPrincipal(this);
-        
+        edit = new PanneauEditeur(pl.getSize(), this);
+
+		
         this.setTitle("BomBerMan");
         /*Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int height = (int)dimension.getHeight()-40;
@@ -47,6 +51,7 @@ import java.awt.event.WindowEvent;
         this.jp = new JPanel(cl);
         
         this.setContentPane(jp);
+        jp.add(edit,"editeur de niveau");
         jp.add(mp,"menuprincipal");
         jp.add(p,"jeu");
         jp.add(m, "menu");
@@ -76,6 +81,14 @@ import java.awt.event.WindowEvent;
 	public void afficherMenu() { 
     	cl.show(jp,"menu");
 	}
+	
+	public void afficherEditeurNiveau() {
+
+    	this.setSize(new Dimension(1000,1026));
+		ce = new ControlerEditeur(edit);
+		this.addMouseListener(ce);
+		cl.show(jp,"editeur de niveau");
+	}
 
     public void run() {
         try {
@@ -91,6 +104,14 @@ import java.awt.event.WindowEvent;
             this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
     }
+
+	public void afficherMenuPrincipale() {
+
+        this.setBackground(Color.black);
+        this.setSize(new Dimension(1015, 700));
+		cl.show(jp,"menuprincipal");
+		
+	}
 
 	
 }

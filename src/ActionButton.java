@@ -13,6 +13,22 @@ public class ActionButton extends AbstractAction {
 		}
 	 
 		public void actionPerformed(ActionEvent event){
+			switch(text) {
+				case "play":
+					fenetre.afficherJeu();
+					break;
+				case "restart":
+					fenetre.restartJeu();
+					break;
+				case "exit":
+					System.exit(1);
+					break;
+				case "affichermenu":
+					fenetre.afficherMenuPrincipale();
+					break;
+				case "editeur de niveau":
+					fenetre.afficherEditeurNiveau();
+			}/*
 			if(text == "play") {
 				fenetre.afficherJeu();
 			}
@@ -21,6 +37,6 @@ public class ActionButton extends AbstractAction {
 			}
 			if(text == "exit"){
 				System.exit(1);
-			}
+			}*/
 		}
 	}

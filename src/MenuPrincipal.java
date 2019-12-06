@@ -11,8 +11,8 @@ import javax.swing.border.Border;
 
 public class MenuPrincipal extends JPanel{
 	private JButton play;
-	//private JButton restart;
 	private JButton exit;
+	private JButton edit;
 	private Image img1;
 	
 	public MenuPrincipal(Oui fen) {
@@ -24,10 +24,11 @@ public class MenuPrincipal extends JPanel{
 		}
 		this.setBackground(Color.black);
 		play = new JButton(new ActionButton(fen,"play"));
+		edit = new JButton(new ActionButton(fen,"editeur de niveau"));
 		exit = new JButton(new ActionButton(fen, "exit"));
 		play.setBackground(Color.orange);
 		this.add(play);
-		//this.add(restart);
+		this.add(edit);
 		this.add(exit);
 		this.setSize(100, 100);
 	}
