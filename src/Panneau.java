@@ -15,6 +15,7 @@ public class Panneau extends JPanel {
     private int vie;
     private int fullPerso;
 
+
     Panneau(Plateau pl) {
         super();
         int taille =pl.getSize();

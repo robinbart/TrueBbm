@@ -16,6 +16,7 @@ import java.awt.event.WindowEvent;
     private CardLayout cl;
     private JPanel jp;
     private Menu m;
+    private MenuPrincipal mp;
     
     
     public Oui(Plateau pl, ArrayList<Perso> ap) {
@@ -25,6 +26,7 @@ import java.awt.event.WindowEvent;
         c = new Controler(ap,this);
         p = new Panneau(pl);
         m = new Menu(this);
+        mp = new MenuPrincipal(this);
         
         this.setTitle("BomBerMan");
         /*Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -35,7 +37,7 @@ import java.awt.event.WindowEvent;
         this.setBackground(Color.black);
         this.setLocation(150, 0);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(new Dimension(1015, 1037));
+        this.setSize(new Dimension(1015, 700));
         this.setVisible(true);
         this.addKeyListener(c);
         this.setResizable(false);
@@ -45,9 +47,10 @@ import java.awt.event.WindowEvent;
         this.jp = new JPanel(cl);
         
         this.setContentPane(jp);
+        jp.add(mp,"menuprincipal");
         jp.add(p,"jeu");
         jp.add(m, "menu");
-        cl.show(jp,"menu");
+        cl.show(jp,"menuprincipal");
     }
 
     public void setP(ArrayList<Perso> ap, Plateau pl){
@@ -61,6 +64,7 @@ import java.awt.event.WindowEvent;
     }
     
     public void afficherJeu() {
+    	this.setSize(new Dimension(1000,1026));
     	this.setFocusable(true);
     	cl.show(jp,"jeu");
 	}
