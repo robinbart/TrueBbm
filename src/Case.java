@@ -1,9 +1,14 @@
- public class Case {
+import java.util.Random;
+
+public class Case {
 
     private Contenu c;
     private boolean amorce;
     private boolean explo;
     private int explosimultane;
+    //update bonus_malus
+    private int bonus=0; //0->aucun bonus
+    private Random rand;
 
     public Case(Contenu c) {
         this.c = c;
@@ -14,6 +19,28 @@
     
     public void casse() {
     	c=Contenu.Vide;
+    	
+    	//ajout du bonus sur la case
+    	int i=rand.nextInt(25);
+    	if(i<5) {
+    		bonus=i;
+    	}
+    }
+    
+    public void bonusRecup() {
+    	bonus=0;
+    }
+    
+    public int getBonus() {
+    	return bonus;
+    }
+    
+    public boolean isBonus() {
+    	if(bonus==0) {
+    		return false;
+    	}else {
+    		return true;
+    	}
     }
 
     public void amorcage() {

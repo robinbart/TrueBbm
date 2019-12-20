@@ -140,7 +140,16 @@ public class Plateau extends Object{
     public void spawn(int x, int y) {
         tab[x][y].setC(Contenu.Perso);
     }
-
+    
+    public Perso findPerso(int x, int y) {
+    	for(int i=0; i<p.size(); i++) {
+    		if(p.get(i).getX()==x && p.get(i).getY()==y) {
+    			return p.get(i);
+    		}
+    	}
+    	return null;
+	}
+    
     public void deplacement(Perso p, int x, int y, int i, int j) { //plus du genre a se tp
         if (i < taille && j < taille && i >= 0 && j >= 0) {
             if (tab[x][y].getC() == Contenu.Perso) {
@@ -148,6 +157,21 @@ public class Plateau extends Object{
                     System.out.println("4");
                     tab[x][y].setC(Contenu.Vide);
                     tab[i][j].setC(Contenu.Perso);
+                    if(tab[i][j].isBonus()) {
+                    	switch(tab[i][j].getBonus()) {
+                    	case 1:
+                    		findPerso(i,j).powerUpPortee();
+                    		break;
+                    	case 2:
+                    		findPerso(i,j).powerUpLife();
+                    		break;
+                    	case 3:
+                    		findPerso(i,j).powerDownPortee();
+                    		break;
+                    	case 4:
+                    		findPerso(i,j).powerDownLife();
+                    	}
+                    }
                     p.setXY(i, j);
                 }
             }
