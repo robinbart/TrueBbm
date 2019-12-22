@@ -23,11 +23,14 @@ public class ActionButton extends AbstractAction {
 				case "exit":
 					System.exit(1);
 					break;
-				case "affichermenu":
+				case "menu principal":
 					fenetre.afficherMenuPrincipale();
 					break;
 				case "editeur de niveau":
 					fenetre.afficherEditeurNiveau();
+					break;
+				case "enregistrer map":
+					fenetre.enregistrerMap();
 			}/*
 			if(text == "play") {
 				fenetre.afficherJeu();

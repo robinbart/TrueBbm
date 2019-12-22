@@ -18,7 +18,7 @@ import java.awt.event.WindowEvent;
     private Menu m;
     private MenuPrincipal mp;
     private PanneauEditeur edit;
-    private ControlerEditeur ce;
+    private ControlerEditeur ce = null;
     
     
     public Oui(Plateau pl, ArrayList<Perso> ap) {
@@ -83,12 +83,18 @@ import java.awt.event.WindowEvent;
 	}
 	
 	public void afficherEditeurNiveau() {
-
+        if(ce == null) {
+            ce = new ControlerEditeur(edit);
+            this.addMouseListener(ce);
+        }
     	this.setSize(new Dimension(1000,1026));
-		ce = new ControlerEditeur(edit);
-		this.addMouseListener(ce);
 		cl.show(jp,"editeur de niveau");
 	}
+
+	public void enregistrerMap(){
+        //TODO: enregistrer comme dans zboob.txt
+        cl.show(jp, "enregistrer map");
+    }
 
     public void run() {
         try {
@@ -110,7 +116,6 @@ import java.awt.event.WindowEvent;
         this.setBackground(Color.black);
         this.setSize(new Dimension(1015, 700));
 		cl.show(jp,"menuprincipal");
-		
 	}
 
 	

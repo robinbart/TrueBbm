@@ -5,8 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class PanneauEditeur extends JPanel{
     private Image img1;
@@ -16,11 +15,14 @@ public class PanneauEditeur extends JPanel{
     private int taille;
     private int tabrand[][];
     private JButton menuprincipale;
+    private JButton enregistrer;
     
     public PanneauEditeur(int taille, Oui fen) {
     	this.taille=taille;
-		menuprincipale = new JButton(new ActionButton(fen,"affichermenu"));
+		menuprincipale = new JButton(new ActionButton(fen,"menu principal"));
+		enregistrer = new JButton(new ActionButton(fen, "enregistrer partie"));
 		this.add(menuprincipale);
+		this.add(enregistrer);
     	tabrand =new int[taille][taille];
         for(int i = 0; i < taille; i++ ) {
         	for(int j = 0; j < taille; j++) {
@@ -66,4 +68,8 @@ public class PanneauEditeur extends JPanel{
             }
     	}
     }
+
+    public void enregistre(String nom){
+
+	}
 }
