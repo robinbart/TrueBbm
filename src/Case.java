@@ -22,7 +22,7 @@ public class Case {
     	
     	//ajout du bonus sur la case
     	int i=rand.nextInt(25);
-    	System.out.println("je suis ici " + i);
+    	//System.out.println("je suis ici " + i);
     	if(i<5) {
     		bonus=i;
     	}
@@ -59,7 +59,7 @@ public class Case {
     	if(explosimultane != 0){
     	    explosimultane--;
         }
-        System.out.println(explosimultane);
+        //System.out.println(explosimultane);
     	if(explosimultane==0) {
     		explo = false;
     	}

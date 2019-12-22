@@ -31,7 +31,7 @@ public class PanneauEditeur extends JPanel{
             this.img1 = ImageIO.read(new File("testsprite1.png"));
             this.img2 = ImageIO.read(new File("testsprite2.png"));
         } catch (IOException e) {
-            System.out.print(e.getMessage());
+            //System.out.print(e.getMessage());
         }
     	tabcase = new int[10][10];
     	for (int i = 0; i < taille; i++) {

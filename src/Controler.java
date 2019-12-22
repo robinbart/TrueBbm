@@ -9,7 +9,7 @@ public class Controler implements KeyListener {
     private boolean pause = false;
 
     public Controler(ArrayList<Perso> ap, Oui fen) {
-    	System.out.println("controller init");
+    	////System.out.println("controller init");
         this.ap = ap;
         this.fen=fen;
     } 
@@ -22,7 +22,7 @@ public class Controler implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e){
-        System.out.println("zhhrhhert " + e.getKeyCode());
+        ////System.out.println("zhhrhhert " + e.getKeyCode());
         int kc = e.getKeyCode();
         //Perso numero 1
         if (kc == 37 || kc == 38 || kc == 39 || kc == 40 || kc == 17 || kc == 18) {
@@ -48,15 +48,15 @@ public class Controler implements KeyListener {
                 }
             }
         }
-    	System.out.println("appuyer sur une touche");
+    	////System.out.println("appuyer sur une touche");
         if(kc == 27) {
-        	System.out.println("appuyer sur echap");
+        	////System.out.println("appuyer sur echap");
         	if(!pause) {
-            	System.out.println("j'affiche le menu");
+            	////System.out.println("j'affiche le menu");
         		fen.afficherMenu();
         		pause=true;
         	}else {
-            	System.out.println("j'affiche le jeu");
+            	////System.out.println("j'affiche le jeu");
 
         		fen.afficherJeu();
         		pause=false;

@@ -22,7 +22,7 @@ public class Plateau extends Object{
         	Buff = new BufferedReader(new FileReader("zboob.txt"));
 	    }
 	    catch(FileNotFoundException exc) {
-	    	System.out.println("Erreur d'ouverture");
+	    	//////System.out.println("Erreur d'ouverture");
 	    }
         String ligne;
         try {
@@ -31,16 +31,16 @@ public class Plateau extends Object{
 				while ((c = inputStream.read()) != -1) {
 	                outputStream.write(c);
 	            }
-			    System.out.println(ligne);
+			    //////System.out.println(ligne);
 			}
 		} catch (IOException e) {
-			System.out.println("raf est une tantouze");
+			//////System.out.println("raf est une tantouze");
 		}
         try {
 			Buff.close();
 		} catch (IOException e) {
 
-			System.out.println("Aurelien aussi d'ailleurs");
+			//////System.out.println("Aurelien aussi d'ailleurs");
 		}*/
         FileReader inputStream = null;
         int i=0 , j=0;
@@ -141,27 +141,16 @@ public class Plateau extends Object{
         tab[x][y].setC(Contenu.Perso);
     }
     
-    public Perso findPerso(int x, int y) {
-    	for(int i=0; i<persos.size(); i++) {
-    		if(persos.get(i).getX()==x && persos.get(i).getY()==y) {
-    			return persos.get(i);
-    		}
-    	}
-    	return null;
-	}
-    
     public void deplacement(Perso perso, int x, int y, int i, int j) { //plus du genre a se tp
         if (i < taille && j < taille && i >= 0 && j >= 0) {
             if (tab[x][y].getC() == Contenu.Perso) {
                 if (tab[i][j].getC() == Contenu.Vide) {
-                    System.out.println("4");
                     tab[x][y].setC(Contenu.Vide);
                     tab[i][j].setC(Contenu.Perso);
                     if(tab[i][j].isBonus()) {
-                        System.out.println("je suis arrivé ici  1  ");
                     	switch(tab[i][j].getBonus()) {
                     	case 1:
-                            System.out.println("je suis arrive ici  2");
+                            System.out.println("je suis arrive ici  1");
                     		perso.powerUpPortee();
                     		break;
                     	case 2:
@@ -169,13 +158,14 @@ public class Plateau extends Object{
                             perso.powerUpLife();
                     		break;
                     	case 3:
-                            System.out.println("je suis arrive ici  2");
+                            System.out.println("je suis arrive ici  3");
                             perso.powerDownPortee();
                     		break;
                     	case 4:
-                            System.out.println("je suis arrive ici  2");
+                            System.out.println("je suis arrive ici  4");
                             perso.powerDownLife();
                     	}
+                    	tab[i][j].bonusRecup();
                     }
                     perso.setXY(i, j);
                 }
@@ -197,8 +187,8 @@ public class Plateau extends Object{
                 }
             }
         }
-        System.out.println("x : " + x + " et y : " + y);
-        System.out.println("Perso 1 a " + persos.get(0).getVie());
+        //////System.out.println("x : " + x + " et y : " + y);
+        //////System.out.println("Perso 1 a " + persos.get(0).getVie());
         for (int j = 1; j < portee; j++) { //vers le bas
             if (y + j < taille && (tab[x][y + j].getC() == Contenu.Vide
                     || tab[x][y + j].getC() == Contenu.Perso)) {
@@ -215,14 +205,14 @@ public class Plateau extends Object{
                                 th.get(i).interrupt();
                                 th.remove(i);
                                 bombes.remove(i);
-                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                                //////System.out.println("Je fais exploser la bombe " + i + " plus tot");
                             }
                         }
                     }
                     tab[x][y + j].setExplo();
-                    //System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explos�");
+                    ////////System.out.println(" la case en x : "+x+" et y : "+Math.min(y + j, taille - 1)+" a explos�");
                 } else {
-                    //System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+                    ////////System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
                     if (y + j < taille && (tab[x][y + j].getC() == Contenu.Mur_Cassable)) {
                         tab[x][y + j].casse();
                     }
@@ -235,7 +225,7 @@ public class Plateau extends Object{
                         for (int i = 0; i < persos.size(); i++) {
                             if (persos.get(i).getX() == x && persos.get(i).getY() == y - j) {
                                 persos.get(i).perdVie();
-                                System.out.println("je perd un point " + persos.get(i).getVie() + " en haut");
+                                //////System.out.println("je perd un point " + persos.get(i).getVie() + " en haut");
                             }
                         }
                     }
@@ -245,14 +235,14 @@ public class Plateau extends Object{
                                 th.get(i).interrupt();
                                 th.remove(i);
                                 bombes.remove(i);
-                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                                //////System.out.println("Je fais exploser la bombe " + i + " plus tot");
                             }
                         }
                     }
                     tab[x][y - j].setExplo();
-                    //System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explos�");
+                    ////////System.out.println(" la case en x : "+x+" et y : "+Math.max(y - j, 0)+" a explos�");
                 } else {
-                    //System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
+                    ////////System.out.println(" l'explo a rencontre un mur en x : "+x+" et y : "+Math.min(y + j, taille - 1));
                     if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Mur_Cassable)) {
                         tab[x][y - j].casse();
                     }
@@ -266,7 +256,7 @@ public class Plateau extends Object{
                         for (int i = 0; i < persos.size(); i++) {
                             if (persos.get(i).getX() == x + j && persos.get(i).getY() == y) {
                                 persos.get(i).perdVie();
-                                System.out.println("je perd un point " + persos.get(i).getVie() + " a droite");
+                                //////System.out.println("je perd un point " + persos.get(i).getVie() + " a droite");
                             }
                         }
                     }
@@ -276,14 +266,14 @@ public class Plateau extends Object{
                                 th.get(i).interrupt();
                                 th.remove(i);
                                 bombes.remove(i);
-                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                                //////System.out.println("Je fais exploser la bombe " + i + " plus tot");
                             }
                         }
                     }
                     tab[x + j][y].setExplo();
-                    //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
+                    ////////System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
                 } else {
-                    System.out.println(" l'explo a rencontre un mur en x : " + Math.max(x + j, 0) + " et y : " + y);
+                    //////System.out.println(" l'explo a rencontre un mur en x : " + Math.max(x + j, 0) + " et y : " + y);
                     if (x + j < taille && (tab[x + j][y].getC() == Contenu.Mur_Cassable)) {
                         tab[x + j][y].casse();
                     }
@@ -297,7 +287,7 @@ public class Plateau extends Object{
                         for (int i = 0; i < persos.size(); i++) {
                             if (persos.get(i).getX() == x - j && persos.get(i).getY() == y) {
                                 persos.get(i).perdVie();
-                                System.out.println("je perd un point " + persos.get(i).getVie() + " a gauche");
+                                //////System.out.println("je perd un point " + persos.get(i).getVie() + " a gauche");
                             }
                         }
                     }
@@ -307,14 +297,14 @@ public class Plateau extends Object{
                                 th.get(i).interrupt();
                                 th.remove(i);
                                 bombes.remove(i);
-                                System.out.println("Je fais exploser la bombe " + i + " plus tot");
+                                //////System.out.println("Je fais exploser la bombe " + i + " plus tot");
                             }
                         }
                     }
                     tab[x - j][y].setExplo();
-                    //System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
+                    ////////System.out.println(" la case en x : "+Math.min(x + j, taille - 1)+" et y : "+y+" a explos�");
                 } else {
-                    //System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
+                    ////////System.out.println(" l'explo a rencontre un mur en x : "+Math.max(x - j, 0)+" et y : "+y);
                     if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Mur_Cassable)) {
                         tab[x - j][y].casse();
                     }

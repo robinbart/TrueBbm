@@ -14,20 +14,20 @@ public class ControlerEditeur implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
-		System.out.println("cliqué en : "+event.getX()/100+" , "+event.getX()/100);
+		////System.out.println("cliqué en : "+event.getX()/100+" , "+event.getX()/100);
 		edit.setXY(event.getX()/100,(event.getY()-27)/100);
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent event) {
-		System.out.println("entré en : "+event.getX()+" , "+event.getY());
+		////System.out.println("entré en : "+event.getX()+" , "+event.getY());
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent event) {
-		System.out.println("sortie en : "+event.getX()+" , "+event.getY());
+		////System.out.println("sortie en : "+event.getX()+" , "+event.getY());
 		
 	}
 

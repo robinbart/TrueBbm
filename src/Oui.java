@@ -93,7 +93,7 @@ import java.awt.event.WindowEvent;
     public void run() {
         try {
             while (true) {
-            	//System.out.println("affichage");
+            	////System.out.println("affichage");
                 Thread.sleep(20);
                 p.repaint();
             }

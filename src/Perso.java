@@ -53,7 +53,7 @@ public class Perso implements Runnable {
     public void perdVie() {
         if(!immune) {
             vie--;
-            System.out.println("aïe j'ai plus que " + vie + " point de vie");
+            //System.out.println("aïe j'ai plus que " + vie + " point de vie");
             if (vie <= 0) {
                 p.getTab(x, y).setC(Contenu.Vide);
                 mort = true;
@@ -77,7 +77,7 @@ public class Perso implements Runnable {
 
     public void changerE(int KeyCode) {
         this.e = KeyCode;
-        System.out.print("test " + e);
+        //System.out.print("test " + e);
         synchronized (m) {
             m.notifyAll();
         }
@@ -102,7 +102,7 @@ public class Perso implements Runnable {
             }
             if (e == 17) {
                 if(nbBombe < maxBombe) {
-                    System.out.println("J'amorce");
+                    //System.out.println("J'amorce");
                     Bombe b = new Bombe(portee, p, x, y, this);
                     Thread t = new Thread(b);
                     t.start();
@@ -110,7 +110,7 @@ public class Perso implements Runnable {
                     nbBombe++;
                 }
             }
-            System.out.println("\nnique " + e);
+            //System.out.println("\nnique " + e);
             if (e == 40) {//vers le bas
                 p.deplacement(this, x, y, x, y + 1);
             }

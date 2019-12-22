@@ -20,15 +20,15 @@
                 Thread.sleep(2000);
             }
             catch (InterruptedException e){
-                System.out.println("Je continue");
+                //System.out.println("Je continue");
             }
             perso.removeBombe();
             p.explosion(portee, x, y);
-			System.out.println("J'EXPLOSE EN COURS");
+			//System.out.println("J'EXPLOSE EN COURS");
             Thread.sleep(1000);
             p.finexplo(portee, x, y);
         } catch (InterruptedException e) {
-            System.out.println("Sleep bombe bugue");
+            //System.out.println("Sleep bombe bugue");
         }
     }
 

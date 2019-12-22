@@ -58,13 +58,13 @@ public class Lancement {
                 for(int i = 0; i < NB_PERSO; i++) {
                     th.add(new Thread(persos.get(i)));
                     th.get(i).start();
-                    System.out.println("demarrage"+i);
+                    //System.out.println("demarrage"+i);
             	}
                 pl.addPerso(persos);
                 fen = new Oui(pl, persos);
                 Thread t3 = new Thread(fen);
                 t3.start();
-                System.out.println("thread oui lancé");
+                //System.out.println("thread oui lancé");
                 
                 created = false;
             }

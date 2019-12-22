@@ -35,7 +35,7 @@ public class Panneau extends JPanel {
             this.img1 = ImageIO.read(new File("testsprite1.png"));
             this.img2 = ImageIO.read(new File("testsprite2.png"));
         } catch (IOException e) {
-            System.out.print(e.getMessage());
+            //System.out.print(e.getMessage());
         }
     }
     
