@@ -8,7 +8,7 @@ public class Case {
     private int explosimultane;
     //update bonus_malus
     private int bonus=0; //0->aucun bonus
-    private Random rand;
+    private Random rand = new Random();
 
     public Case(Contenu c) {
         this.c = c;
@@ -22,6 +22,7 @@ public class Case {
     	
     	//ajout du bonus sur la case
     	int i=rand.nextInt(25);
+    	System.out.println("je suis ici " + i);
     	if(i<5) {
     		bonus=i;
     	}

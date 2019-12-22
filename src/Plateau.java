@@ -10,7 +10,7 @@ public class Plateau extends Object{
 
     private Case[][] tab;
     private int taille;
-    private ArrayList<Perso> p;
+    private ArrayList<Perso> persos;
     private ArrayList<Thread>th = new ArrayList<>();
     private ArrayList<Bombe> bombes = new ArrayList<>();
 
@@ -96,13 +96,13 @@ public class Plateau extends Object{
     }
     
     public void setArrayList(ArrayList<Perso> a) {
-    	this.p = a;
+    	this.persos = a;
     }
    
     
     public int retournnumberperso(int x , int y) {
-    	for (int j = 0; j < p.size(); j++) {
-    		if(p.get(j).getX()==x && p.get(j).getY()==y) {
+    	for (int j = 0; j < persos.size(); j++) {
+    		if(persos.get(j).getX()==x && persos.get(j).getY()==y) {
     			return j;
     		}
     	}
@@ -110,19 +110,19 @@ public class Plateau extends Object{
     }
     
     public boolean isPersoHurt(int i) {
-    	return p.get(i).getImmune();
+    	return persos.get(i).getImmune();
     }
     
     public Perso getPerso(int i) {
-    	return p.get(i);
+    	return persos.get(i);
     }
     
     public ArrayList<Perso> getFullPerso() {
-    	return p;
+    	return persos;
     }
     
     public void addPerso(ArrayList<Perso> p){
-        this.p = p;
+        this.persos = p;
     }
 
     public Case getTab(int x, int y) {
@@ -142,15 +142,15 @@ public class Plateau extends Object{
     }
     
     public Perso findPerso(int x, int y) {
-    	for(int i=0; i<p.size(); i++) {
-    		if(p.get(i).getX()==x && p.get(i).getY()==y) {
-    			return p.get(i);
+    	for(int i=0; i<persos.size(); i++) {
+    		if(persos.get(i).getX()==x && persos.get(i).getY()==y) {
+    			return persos.get(i);
     		}
     	}
     	return null;
 	}
     
-    public void deplacement(Perso p, int x, int y, int i, int j) { //plus du genre a se tp
+    public void deplacement(Perso perso, int x, int y, int i, int j) { //plus du genre a se tp
         if (i < taille && j < taille && i >= 0 && j >= 0) {
             if (tab[x][y].getC() == Contenu.Perso) {
                 if (tab[i][j].getC() == Contenu.Vide) {
@@ -158,21 +158,26 @@ public class Plateau extends Object{
                     tab[x][y].setC(Contenu.Vide);
                     tab[i][j].setC(Contenu.Perso);
                     if(tab[i][j].isBonus()) {
+                        System.out.println("je suis arrivé ici  1  ");
                     	switch(tab[i][j].getBonus()) {
                     	case 1:
-                    		findPerso(i,j).powerUpPortee();
+                            System.out.println("je suis arrive ici  2");
+                    		perso.powerUpPortee();
                     		break;
                     	case 2:
-                    		findPerso(i,j).powerUpLife();
+                            System.out.println("je suis arrive ici  2");
+                            perso.powerUpLife();
                     		break;
                     	case 3:
-                    		findPerso(i,j).powerDownPortee();
+                            System.out.println("je suis arrive ici  2");
+                            perso.powerDownPortee();
                     		break;
                     	case 4:
-                    		findPerso(i,j).powerDownLife();
+                            System.out.println("je suis arrive ici  2");
+                            perso.powerDownLife();
                     	}
                     }
-                    p.setXY(i, j);
+                    perso.setXY(i, j);
                 }
             }
         }
@@ -186,21 +191,21 @@ public class Plateau extends Object{
     public void explosion(int portee, int x, int y) {
         tab[x][y].deflag();
         if (tab[x][y].getC() == Contenu.Perso) {
-            for (int i = 0; i < p.size(); i++) {
-                if (p.get(i).getX() == x && p.get(i).getY() == y) {
-                    p.get(i).perdVie();
+            for (int i = 0; i < persos.size(); i++) {
+                if (persos.get(i).getX() == x && persos.get(i).getY() == y) {
+                    persos.get(i).perdVie();
                 }
             }
         }
         System.out.println("x : " + x + " et y : " + y);
-        System.out.println("Perso 1 a " + p.get(0).getVie());
+        System.out.println("Perso 1 a " + persos.get(0).getVie());
         for (int j = 1; j < portee; j++) { //vers le bas
             if (y + j < taille && (tab[x][y + j].getC() == Contenu.Vide
                     || tab[x][y + j].getC() == Contenu.Perso)) {
                 if (tab[x][y + j].getC() == Contenu.Perso) {
-                    for (int i = 0; i < p.size(); i++) {
-                        if (p.get(i).getX() == x && p.get(i).getY() == y + j) {
-                            p.get(i).perdVie();
+                    for (int i = 0; i < persos.size(); i++) {
+                        if (persos.get(i).getX() == x && persos.get(i).getY() == y + j) {
+                            persos.get(i).perdVie();
                         }
                     }
                 }
@@ -227,10 +232,10 @@ public class Plateau extends Object{
             for (int j = 1; j < portee; j++) { //vers le haut
                 if (y - j >= 0 && (tab[x][y - j].getC() == Contenu.Vide || tab[x][y - j].getC() == Contenu.Perso)) {
                     if (tab[x][y - j].getC() == Contenu.Perso) {
-                        for (int i = 0; i < p.size(); i++) {
-                            if (p.get(i).getX() == x && p.get(i).getY() == y - j) {
-                                p.get(i).perdVie();
-                                System.out.println("je perd un point " + p.get(i).getVie() + " en haut");
+                        for (int i = 0; i < persos.size(); i++) {
+                            if (persos.get(i).getX() == x && persos.get(i).getY() == y - j) {
+                                persos.get(i).perdVie();
+                                System.out.println("je perd un point " + persos.get(i).getVie() + " en haut");
                             }
                         }
                     }
@@ -258,10 +263,10 @@ public class Plateau extends Object{
                 if (x + j < taille && (tab[x + j][y].getC() == Contenu.Vide
                         || tab[Math.min(x + j, taille - 1)][y].getC() == Contenu.Perso)) {
                     if (tab[x + j][y].getC() == Contenu.Perso) {
-                        for (int i = 0; i < p.size(); i++) {
-                            if (p.get(i).getX() == x + j && p.get(i).getY() == y) {
-                                p.get(i).perdVie();
-                                System.out.println("je perd un point " + p.get(i).getVie() + " a droite");
+                        for (int i = 0; i < persos.size(); i++) {
+                            if (persos.get(i).getX() == x + j && persos.get(i).getY() == y) {
+                                persos.get(i).perdVie();
+                                System.out.println("je perd un point " + persos.get(i).getVie() + " a droite");
                             }
                         }
                     }
@@ -289,10 +294,10 @@ public class Plateau extends Object{
                 if (x - j >= 0 && (tab[x - j][y].getC() == Contenu.Vide
                         || tab[Math.max(x - j, 0)][y].getC() == Contenu.Perso)) {
                     if (tab[x - j][y].getC() == Contenu.Perso) {
-                        for (int i = 0; i < p.size(); i++) {
-                            if (p.get(i).getX() == x - j && p.get(i).getY() == y) {
-                                p.get(i).perdVie();
-                                System.out.println("je perd un point " + p.get(i).getVie() + " a gauche");
+                        for (int i = 0; i < persos.size(); i++) {
+                            if (persos.get(i).getX() == x - j && persos.get(i).getY() == y) {
+                                persos.get(i).perdVie();
+                                System.out.println("je perd un point " + persos.get(i).getVie() + " a gauche");
                             }
                         }
                     }
