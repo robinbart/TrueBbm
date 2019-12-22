@@ -9,7 +9,7 @@ public class Perso implements Runnable {
     private int x, y;
     private boolean mort = false;
     private boolean immune = false;
-    private int portee = 1;         //TODO: dans constructeur
+    private int portee = 2;         //TODO: dans constructeur
     private int e = 0;
     private int vie = 1;            //TODO: dans constructeur
     private int maxBombe = 2;       //TODO: dans constructeur
@@ -31,7 +31,7 @@ public class Perso implements Runnable {
     }
     
     public void powerDownPortee() {
-    	if(portee>1) {
+    	if(portee>2) {
     		portee--;
     	}
     }
